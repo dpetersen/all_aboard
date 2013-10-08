@@ -1,0 +1,29 @@
+#= require jquery
+#= require handlebars
+#= require ember
+#= require ember-data
+#= require_self
+#= require_tree ./models
+#= require_tree ./controllers
+#= require_tree ./views
+#= require_tree ./helpers
+#= require_tree ./templates
+#= require_tree ./routes
+#= require ./router
+
+Em.LOG_VERSION = false
+
+window.AllAboard = Em.Application.create
+  # rootURL is not an Ember Application, but a custom attribute that we'll use
+  # in the router.  It is defined so that Ember will preserve the URL wherever
+  # the consuming app mounted the engine. Otherwise Ember will reset the URL
+  # to: "/boards/1".
+  rootURL: "<%= AllAboard::Engine.routes.url_helpers.root_path.chop %>"
+
+  #LOG_TRANSITIONS: true
+  #LOG_TRANSITIONS_INTERNAL: true
+
+AllAboard.ApplicationAdapter = DS.RESTAdapter.extend
+  # My karate coding style is not elegant, but it is awesome.  Store URL can't
+  # start with a slash, despite what it seems to say in the docs.
+  namespace: "<%= AllAboard::Engine.routes.url_helpers.root_path.reverse.chop.reverse + "api" %>"

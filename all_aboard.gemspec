@@ -21,13 +21,17 @@ Gem::Specification.new do |s|
   s.add_dependency 'coffee-rails'
   s.add_dependency 'ember-rails'
   s.add_dependency 'ember-source', '1.0.0'
+  s.add_dependency 'ember-data-source', '1.0.0.beta.2'
   s.add_dependency 'haml'
+  s.add_dependency 'active_model_serializers'
 
   s.add_development_dependency 'thin'
   s.add_development_dependency 'rspec-rails'
+  s.add_development_dependency 'database_cleaner'
   s.add_development_dependency 'pry'
   s.add_development_dependency 'shoulda-matchers'
   s.add_development_dependency 'factory_girl_rails'
   s.add_development_dependency 'capybara'
   s.add_development_dependency 'poltergeist'
+  s.add_development_dependency 'json'
 end
