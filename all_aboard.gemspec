@@ -14,9 +14,12 @@ Gem::Specification.new do |s|
   s.description = "A Rails engine to build your own status boards."
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
-  s.test_files = Dir["test/**/*"]
+  s.test_files = Dir["spec/**/*"]
 
   s.add_dependency "rails", "~> 4.0.0"
+  s.add_dependency 'pg'
 
-  s.add_development_dependency "sqlite3"
+  s.add_development_dependency 'thin'
+  s.add_development_dependency 'rspec-rails'
+  s.add_development_dependency 'pry'
 end
