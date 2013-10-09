@@ -7,4 +7,5 @@ guard :rspec do
   watch(%r{^app/(.*)(\.erb|\.haml|\.slim)$})          { "spec/features" }
   watch(%r{^spec/support/(.+)\.rb$})                  { "spec" }
   watch(%r{^app/controllers/(.+)_(controller)\.rb$})  { [ "spec/features", "spec/api" ] }
+  watch(%r{^app/assets/javascripts/.+\.(js|coffee|hbs)$})  { [ "spec/features" ] }
 end
