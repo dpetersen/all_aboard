@@ -4,3 +4,4 @@ pkg/
 spec/dummy/log/*.log
 spec/dummy/tmp/
 spec/dummy/.sass-cache
+tmp/rspec_guard_result
