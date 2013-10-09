@@ -1,3 +1,4 @@
 = AllAboard
 
-This project rocks and uses MIT-LICENSE.
+TODO:
+  * Document the overridden helper that you have to do, along with the fact that it sort of executes in the Engine's constants, so some stuff might not work so hot.
