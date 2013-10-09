@@ -1,1 +1,2 @@
-AllAboard.BoardsController = Em.ArrayController.extend()
+AllAboard.BoardsController = Em.ArrayController.extend
+  needs: [ "application" ]

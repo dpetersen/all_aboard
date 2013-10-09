@@ -1,3 +1,7 @@
+{{#if controllers.application.canManageBoards}}
+  {{render newBoard}}
+{{/if}}
+
 {{#if model}}
   <ol>
     {{#each model}}

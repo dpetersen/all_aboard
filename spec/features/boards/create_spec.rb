@@ -1,0 +1,21 @@
+require 'spec_helper'
+
+describe "Board creation", :js do
+  context "not logged in" do
+    it "doesn't show the board creation form" do
+      visit engine_routes.boards_path
+      expect(page).to have_no_content("Name")
+    end
+  end
+
+  context "logged in" do
+    before { log_in }
+
+    it "can create a board" do
+      visit engine_routes.boards_path
+      fill_in "Name", with: "New Board Name"
+      click_button "Create"
+      expect(page).to have_content("New Board Name")
+    end
+  end
+end
