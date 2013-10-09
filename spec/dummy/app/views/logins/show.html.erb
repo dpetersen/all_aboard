@@ -1,0 +1,19 @@
+<p>
+  <%= link_to "Back to boards", all_aboard.boards_path %>
+</p>
+
+<p>
+  session: <%= session[:logged_in] %>.
+</p>
+
+<p>
+  #can_manage_boards?: <%= can_manage_boards? %>.
+</p>
+
+<%= form_tag login_path do %>
+  <%= submit_tag "Secure Login!!!1!" %>
+<% end %>
+
+<%= form_tag login_path, method: :delete do %>
+  <%= submit_tag "Secure Logout!!!1!" %>
+<% end %>
