@@ -13,7 +13,7 @@ describe "/api/boards.json" do
   end
 
   context "with boards" do
-    before { FactoryGirl.create(:board, name: "Test Board") }
+    let!(:board) { FactoryGirl.create(:board, name: "Test Board") }
 
     it "returns a success response status" do
       expect(response.status).to eq(200)
@@ -21,6 +21,7 @@ describe "/api/boards.json" do
 
     it "returns all of the boards" do
       expect(hash.length).to eq(1)
+      expect(hash.first["id"]).to eq(board.id)
       expect(hash.first["name"]).to eq("Test Board")
     end
   end
