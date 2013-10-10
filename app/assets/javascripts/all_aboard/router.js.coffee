@@ -4,3 +4,4 @@ AllAboard.Router.reopen
 
 AllAboard.Router.map ()->
   @resource('boards')
+  @resource('board', path: '/board/:board_id')

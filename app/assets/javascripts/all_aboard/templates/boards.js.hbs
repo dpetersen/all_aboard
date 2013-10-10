@@ -4,8 +4,10 @@
 
 {{#if model}}
   <ol>
-    {{#each model}}
-      <li>{{name}}</li>
+    {{#each board in model}}
+      <li>
+        {{#link-to "board" board}}{{board.name}}{{/link-to}}
+      </li>
     {{/each}}
   </ol>
 {{else}}

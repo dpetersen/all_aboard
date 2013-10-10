@@ -16,6 +16,12 @@ describe "Board creation", :js do
       fill_in "Name", with: "New Board Name"
       click_button "Create"
       expect(page).to have_content("New Board Name")
+      expect(page).to have_link("New Board Name")
+
+      click_link "New Board Name"
+      within(".board-title") do
+        expect(page).to have_content("New Board Name")
+      end
     end
   end
 end
