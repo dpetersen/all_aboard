@@ -15,7 +15,7 @@ describe "Board creation", :js do
       visit engine_routes.boards_path
       fill_in "Name", with: "New Board Name"
       click_button "Create"
-      expect(page).to have_content("New Board Name")
+      expect(page).to have_content("Saving New Board Name...")
       expect(page).to have_link("New Board Name")
 
       click_link "New Board Name"

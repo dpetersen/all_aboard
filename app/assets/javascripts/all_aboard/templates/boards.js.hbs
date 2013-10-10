@@ -6,7 +6,11 @@
   <ol>
     {{#each board in model}}
       <li>
-        {{#link-to "board" board}}{{board.name}}{{/link-to}}
+        {{#if board.id}}
+          {{#link-to "board" board}}{{board.name}}{{/link-to}}
+        {{else}}
+          Saving {{board.name}}...
+        {{/if}}
       </li>
     {{/each}}
   </ol>
