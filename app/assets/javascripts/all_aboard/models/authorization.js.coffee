@@ -1,4 +1,4 @@
-AllAboard.ApplicationController = Em.Controller.extend
+AllAboard.Authorization = Em.Object.extend
   implementingAppLoginPath: Em.computed ->
     $("body").data("implementingAppLoginPath")
   .cacheable()
