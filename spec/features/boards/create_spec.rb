@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "Board creation", :js do
   context "not logged in" do
     it "doesn't show the board creation form" do
-      visit engine_routes.boards_path
+      visit all_aboard.boards_path
       expect(page).to have_no_content("Name")
     end
   end
@@ -12,7 +12,7 @@ describe "Board creation", :js do
     before { log_in }
 
     it "can create a board" do
-      visit engine_routes.boards_path
+      visit all_aboard.boards_path
       fill_in "Name", with: "New Board Name"
       click_button "Create"
       expect(page).to have_content("Saving New Board Name...")

@@ -11,7 +11,7 @@ describe "View Board", :js do
     let!(:slide) { FactoryGirl.create(:slide, board: board) }
 
     it "shows the slides" do
-      visit engine_routes.boards_path
+      visit all_aboard.boards_path
       click_link "Test Board"
       expect(page).to have_content("Slide. id: #{slide.id}")
     end
