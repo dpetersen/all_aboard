@@ -3,6 +3,7 @@ AllAboard::Engine.routes.draw do
 
   namespace :api do
     resources :boards, only: [ :index, :create ]
+    resources :slides, only: [ :index ]
   end
 
   root to: "boards#index"
