@@ -11,9 +11,14 @@ describe "Source List", :js do
   context "when an admin user" do
     before { log_in }
 
-    it "can see a list of registered sources" do
+    it "is linked to from the navigation" do
       visit all_aboard.boards_path
       click_link "Sources"
+      expect(page).to have_content("Time")
+    end
+
+    it "can be reached via deep linking" do
+      visit all_aboard.root_path + "sources"
       expect(page).to have_content("Time")
     end
   end
