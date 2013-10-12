@@ -10,9 +10,14 @@ describe "View Board", :js do
   context "with associated Slides" do
     let!(:slide) { FactoryGirl.create(:slide, board: board) }
 
-    it "shows the slides" do
+    it "is linked to from the boards page" do
       visit all_aboard.boards_path
       click_link "Test Board"
+      expect(page).to have_content("Slide. id: #{slide.id}")
+    end
+
+    it "can be visited directly with deep linking" do
+      visit all_aboard.root_path + "board/#{board.id}"
       expect(page).to have_content("Slide. id: #{slide.id}")
     end
   end
