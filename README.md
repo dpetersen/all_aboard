@@ -1,7 +1,10 @@
-= AllAboard
+## AllAboard
 
-![Build Status](https://travis-ci.org/dpetersen/all_aboard.png)
+[![Build Status](https://travis-ci.org/dpetersen/all_aboard.png)](https://travis-ci.org/dpetersen/all_aboard)
 [![Code Climate](https://codeclimate.com/repos/5259b55e56b1024eb101b9fa/badges/64bbc8eb7bbce95c915a/gpa.png)](https://codeclimate.com/repos/5259b55e56b1024eb101b9fa/feed)
 
-TODO:
+A (work in progress) flexible status board as a Rails engine.
+
+#### TODO:
+
   * Document the overridden helper that you have to do, along with the fact that it sort of executes in the Engine's constants, so some stuff might not work so hot.
