@@ -10,6 +10,6 @@ describe "/api/sources.json" do
 
   it "returns the expected sources" do
     expect(hash.length).to eq(1)
-    expect(hash.first["id"]).to eq("TimeSource")
+    expect(hash.first["id"]).to eq("time")
   end
 end

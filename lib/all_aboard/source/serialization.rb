@@ -3,9 +3,11 @@ module AllAboard::Source::Serialization
 
   module ClassMethods
     def as_json(options = {})
+      name_without_suffix = name.gsub(/Source$/, "")
+
       {
-        id: name,
-        name: name.gsub(/Source$/, "")
+        id: name_without_suffix.underscore,
+        name: name_without_suffix
       }
     end
   end
