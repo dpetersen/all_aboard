@@ -1,4 +1,6 @@
 = AllAboard
 
+![Build Status](https://travis-ci.org/dpetersen/all_aboard.png)
+
 TODO:
   * Document the overridden helper that you have to do, along with the fact that it sort of executes in the Engine's constants, so some stuff might not work so hot.
