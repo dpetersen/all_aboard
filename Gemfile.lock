@@ -56,6 +56,8 @@ GEM
     celluloid (0.15.2)
       timers (~> 1.1.0)
     cliver (0.2.2)
+    codeclimate-test-reporter (0.1.1)
+      simplecov (>= 0.7.1, < 1.0.0)
     coderay (1.0.9)
     coffee-rails (4.0.0)
       coffee-script (>= 2.2.0)
@@ -167,6 +169,10 @@ GEM
       rspec-mocks (~> 2.14.0)
     shoulda-matchers (2.3.0)
       activesupport (>= 3.0.0)
+    simplecov (0.7.1)
+      multi_json (~> 1.0)
+      simplecov-html (~> 0.7.1)
+    simplecov-html (0.7.1)
     slop (3.4.6)
     sprockets (2.10.0)
       hike (~> 1.2)
@@ -200,6 +206,7 @@ PLATFORMS
 DEPENDENCIES
   all_aboard!
   capybara
+  codeclimate-test-reporter
   database_cleaner
   factory_girl_rails
   guard-rspec

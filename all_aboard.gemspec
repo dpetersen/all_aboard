@@ -35,4 +35,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'poltergeist'
   s.add_development_dependency 'json'
   s.add_development_dependency 'guard-rspec'
+  s.add_development_dependency 'codeclimate-test-reporter'
 end
