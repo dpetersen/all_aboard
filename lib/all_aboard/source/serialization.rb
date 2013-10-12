@@ -7,7 +7,8 @@ module AllAboard::Source::Serialization
 
       {
         id: name_without_suffix.underscore,
-        name: name_without_suffix
+        name: name_without_suffix,
+        configurableAttributes: configurable_attributes.map(&:id)
       }
     end
   end

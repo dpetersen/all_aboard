@@ -2,14 +2,19 @@ module AllAboard::Source::Configuration
   extend ActiveSupport::Concern
 
   module ClassMethods
-    def configurable(*attributes)
-      @configurable_attributes = attributes
+    def configurable(key, options = {})
+      @configurable_attributes ||= []
+      attribute = AllAboard::Source::ConfigurableAttribute.new(
+        as_json[:id],
+        key,
+        options[:name],
+        options[:description]
+      )
+      @configurable_attributes << attribute
     end
 
-    def configuration
-      @configurable_attributes.each_with_object({}) do |attribute, h|
-        h[attribute] = nil
-      end
+    def configurable_attributes
+      @configurable_attributes
     end
   end
 end

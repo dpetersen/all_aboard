@@ -1,7 +1,7 @@
 <h3>Sources</h3>
 
 <ol>
-  {{#each model}}
-    <li>{{name}}</li>
+  {{#each source in model}}
+    <li>{{#link-to "source" source}}{{source.name}}{{/link-to}}</li>
   {{/each}}
 </ol>

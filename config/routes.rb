@@ -5,9 +5,10 @@ AllAboard::Engine.routes.draw do
   # the route.
   match "/board/*path" => "boards#index", via: :get
   match "/sources" => "boards#index", via: :get
+  match "/source/*path" => "boards#index", via: :get
 
   namespace :api do
-    resources :sources, only: [ :index ]
+    resources :sources, only: [ :index, :show ]
     resources :boards, only: [ :index, :create, :show ]
     resources :slides, only: [ :index ]
   end

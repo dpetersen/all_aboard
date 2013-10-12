@@ -1,3 +1,3 @@
 class TimeSource < AllAboard::Source
-  configurable :timezone
+  configurable :timezone, description: "The zone to display"
 end
