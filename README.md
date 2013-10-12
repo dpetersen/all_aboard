@@ -5,6 +5,8 @@
 
 A (work in progress) flexible status board as a Rails engine.
 
+**All Aboard?  What does that even mean?**  It's a status board engine on Rails.  Give me a break.  All the good names are taken.
+
 #### TODO:
 
   * Document the overridden helper that you have to do, along with the fact that it sort of executes in the Engine's constants, so some stuff might not work so hot.
