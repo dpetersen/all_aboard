@@ -14,6 +14,15 @@ require 'shoulda-matchers'
 require 'capybara/poltergeist'
 Capybara.javascript_driver = :poltergeist
 
+# Not sure if this is because we're an engine, but have to manually force it to
+# use thin.  Worth the effort because that bad boy is a lot faster in
+# integration specs.
+# source: http://stackoverflow.com/questions/4303401/how-to-make-cucumber-selenium-run-thin-server-instead-of-webrick
+Capybara.server do |app, port|
+  require 'rack/handler/thin'
+  Rack::Handler::Thin.run(app, Port: port)
+end
+
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
