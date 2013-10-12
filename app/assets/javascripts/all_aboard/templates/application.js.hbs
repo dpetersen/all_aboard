@@ -1,9 +1,8 @@
-<a {{bind-attr href='authorization.implementingAppLoginPath'}}>
-  {{#if authorization.canManageBoards}}
-    Log out
-  {{else}}
-    Log in
-  {{/if}}
-</a>
+{{#if authorization.canManageBoards}}
+  {{#link-to 'sources'}}Sources{{/link-to}}
+  <a {{bind-attr href='authorization.implementingAppLoginPath'}}>Log out</a>
+{{else}}
+  <a {{bind-attr href='authorization.implementingAppLoginPath'}}>Log in</a>
+{{/if}}
 
 {{outlet}}
