@@ -16,4 +16,11 @@ describe AllAboard::Source do
       it "pulls those out of the db or whatever"
     end
   end
+
+  describe ".as_json" do
+    subject { SourceSpecSource.as_json }
+
+    its([:id]) { should eq("SourceSpecSource") }
+    its([:name]) { should eq("SourceSpec") }
+  end
 end

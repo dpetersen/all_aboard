@@ -8,9 +8,8 @@ describe "/api/sources.json" do
     expect(response.status).to eq(200)
   end
 
-  it "returns the expected attributes" do
+  it "returns the expected sources" do
     expect(hash.length).to eq(1)
     expect(hash.first["id"]).to eq("TimeSource")
-    expect(hash.first["name"]).to eq("Time")
   end
 end

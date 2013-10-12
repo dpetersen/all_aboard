@@ -9,5 +9,12 @@ module AllAboard
         h[attribute] = nil
       end
     end
+
+    def self.as_json(options = {})
+      {
+        id: name,
+        name: name.gsub(/Source$/, "")
+      }
+    end
   end
 end
