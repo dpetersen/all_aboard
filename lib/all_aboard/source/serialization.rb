@@ -2,14 +2,23 @@ module AllAboard::Source::Serialization
   extend ActiveSupport::Concern
 
   module ClassMethods
-    def as_json(options = {})
-      name_without_suffix = name.gsub(/Source$/, "")
+    def id
+      name_without_suffix.underscore
+    end
 
+    def as_json(options = {})
       {
-        id: name_without_suffix.underscore,
+        id: id,
         name: name_without_suffix,
-        configurableAttributes: configurable_attributes.map(&:id)
+        configurableAttributes: configurable_attributes.map(&:id),
+        perspectives: perspectives.map(&:id)
       }
+    end
+
+  protected
+
+    def name_without_suffix
+      name.gsub(/Source$/, "")
     end
   end
 end

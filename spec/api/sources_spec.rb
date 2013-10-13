@@ -27,6 +27,15 @@ describe "/api/sources*" do
         expect(attributes.first["id"]).to eq("time:timezone")
       end
     end
+
+    describe "sideloaded perspectives" do
+      subject(:attributes) { hash["perspectives"] }
+
+      it "returns the expected perspectives" do
+        expect(attributes.length).to eq(1)
+        expect(attributes.first["id"]).to eq("time:current_time")
+      end
+    end
   end
 
   describe "/api/sources/:id.json" do
@@ -52,6 +61,15 @@ describe "/api/sources*" do
       it "returns the expected configurable attributes" do
         expect(attributes.length).to eq(1)
         expect(attributes.first["id"]).to eq("time:timezone")
+      end
+    end
+
+    describe "sideloaded perspectives" do
+      subject(:attributes) { hash["perspectives"] }
+
+      it "returns the expected perspectives" do
+        expect(attributes.length).to eq(1)
+        expect(attributes.first["id"]).to eq("time:current_time")
       end
     end
   end

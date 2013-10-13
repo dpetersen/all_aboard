@@ -4,5 +4,6 @@ module AllAboard
     include Serialization
     include Jobs
     include FilesystemPath
+    include Perspectives
   end
 end
