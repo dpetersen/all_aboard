@@ -9,8 +9,8 @@ class AllAboard::Source::Perspective
     @templates = []
   end
 
-  def add_template(width, height)
-    @templates << AllAboard::Source::Template.new(@id, width, height)
+  def add_template(width, height, markup)
+    @templates << AllAboard::Source::Template.new(@id, width, height, markup)
   end
 
   def templates

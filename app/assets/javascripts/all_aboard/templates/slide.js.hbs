@@ -6,7 +6,7 @@ I am displaying a slide with id {{id}}!
     <ul>
       {{#each perspectiveAssignments}}
         <li {{bind-attr data-row=row data-col=column data-sizex='templateHack.width' data-sizey='templateHack.height'}}>
-          Assignment: {{templateHack.id}}, column: {{column}}, row: {{row}}
+          {{view templateNameBinding="templateHack.templateName"}}
         </li>
       {{/each}}
     </ul>

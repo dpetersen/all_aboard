@@ -52,7 +52,7 @@ describe AllAboard::Source::Perspective do
     end
 
     context "after #add_template is called" do
-      before { perspective.add_template(2, 2) }
+      before { perspective.add_template(2, 2, "markup") }
       its("first.id") { should eq("source:filename:2x2") }
     end
   end
@@ -61,7 +61,7 @@ describe AllAboard::Source::Perspective do
     let(:perspective) do
       AllAboard::Source::Perspective.new("source", :filename, "Name", "Description")
     end
-    before { perspective.add_template(1, 2) }
+    before { perspective.add_template(1, 2, "markup") }
     subject { perspective.as_json }
 
     its([:id]) { should eq("source:filename") }

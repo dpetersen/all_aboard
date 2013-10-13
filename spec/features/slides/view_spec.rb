@@ -21,7 +21,7 @@ describe "View Slide", :js do
 
     it "shows the assigned perspective" do
       visit all_aboard.root_path + "board/#{board.id}/slide/#{slide.id}"
-      expect(page).to have_content("Assignment: time:current_time:2x1, column: 3, row: 4")
+      expect(page).to have_content("I am the current time")
     end
   end
 end
