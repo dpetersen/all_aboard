@@ -43,17 +43,30 @@ describe AllAboard::Source::Perspective do
     end
   end
 
-  describe "#sizes" do
-    subject { perspective.sizes }
+  describe "#templates" do
+    subject { perspective.templates }
     let(:perspective) { AllAboard::Source::Perspective.new("source", :filename) }
 
-    context "with no sizes" do
+    context "with no templates" do
       it { should be_empty }
     end
 
-    context "after #add_size is called" do
-      before { perspective.add_size(2, 2) }
-      it { should eq([ [ 2, 2 ] ]) }
+    context "after #add_template is called" do
+      before { perspective.add_template(2, 2) }
+      its("first.id") { should eq("source:filename:2x2") }
     end
+  end
+
+  describe "#as_json" do
+    let(:perspective) do
+      AllAboard::Source::Perspective.new("source", :filename, "Name", "Description")
+    end
+    before { perspective.add_template(1, 2) }
+    subject { perspective.as_json }
+
+    its([:id]) { should eq("source:filename") }
+    its([:name]) { should eq("Name") }
+    its([:description]) { should eq("Description") }
+    its([:templates]) { should eq([ "source:filename:1x2" ]) }
   end
 end

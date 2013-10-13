@@ -13,6 +13,12 @@
         <li>
           {{name}}
           <em>{{description}}</em>
+
+          <ul>
+            {{#each templates}}
+              <li>{{width}}x{{height}}</li>
+            {{/each}}
+          </ul>
         </li>
       {{/each}}
     </ul>

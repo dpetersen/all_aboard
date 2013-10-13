@@ -31,7 +31,7 @@ module AllAboard::Source::Perspectives
         width, height = file_elements.second.split("x")
         perspective = @perspectives.detect { |p| p.filename.to_s == basename }
 
-        perspective.add_size(width.to_i, height.to_i)
+        perspective.add_template(width.to_i, height.to_i)
       end
 
       @templates_loaded = true

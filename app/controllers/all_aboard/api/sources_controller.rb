@@ -8,7 +8,8 @@ module AllAboard::Api
       respond_with({
         sources: sources,
         configurable_attributes: all_configurable_attributes,
-        perspectives: all_perspectives
+        perspectives: all_perspectives,
+        templates: all_templates
       })
     end
 
@@ -18,7 +19,8 @@ module AllAboard::Api
       respond_with({
         source: source,
         configurable_attributes: source.configurable_attributes,
-        perspectives: source.perspectives
+        perspectives: source.perspectives,
+        templates: source.perspectives.map(&:templates).flatten
       })
     end
 
@@ -26,6 +28,10 @@ module AllAboard::Api
 
     def sources
       AllAboard::SourceManager.instance.sources
+    end
+
+    def all_templates
+      all_perspectives.map(&:templates).flatten
     end
 
     def all_perspectives

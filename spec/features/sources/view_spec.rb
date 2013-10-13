@@ -12,5 +12,7 @@ describe "Source view", :js do
     expect(page).to have_content("Timezone")
     expect(page).to have_content("Current Time")
     expect(page).to have_content("The current time")
+    expect(page).to have_content("2x1")
+    expect(page).to have_content("4x4")
   end
 end

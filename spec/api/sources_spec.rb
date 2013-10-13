@@ -36,6 +36,16 @@ describe "/api/sources*" do
         expect(attributes.first["id"]).to eq("time:current_time")
       end
     end
+
+    describe "sideloaded templates" do
+      subject(:attributes) { hash["templates"] }
+
+      it "returns the expected templates" do
+        expect(attributes.length).to eq(2)
+        expect(attributes.first["id"]).to eq("time:current_time:2x1")
+        expect(attributes.second["id"]).to eq("time:current_time:4x4")
+      end
+    end
   end
 
   describe "/api/sources/:id.json" do
@@ -70,6 +80,16 @@ describe "/api/sources*" do
       it "returns the expected perspectives" do
         expect(attributes.length).to eq(1)
         expect(attributes.first["id"]).to eq("time:current_time")
+      end
+    end
+
+    describe "sideloaded templates" do
+      subject(:attributes) { hash["templates"] }
+
+      it "returns the expected templates" do
+        expect(attributes.length).to eq(2)
+        expect(attributes.first["id"]).to eq("time:current_time:2x1")
+        expect(attributes.second["id"]).to eq("time:current_time:4x4")
       end
     end
   end
