@@ -17,6 +17,7 @@ Gem::Specification.new do |s|
   s.test_files = Dir["spec/**/*"]
 
   s.add_dependency "rails", "~> 4.0.0"
+  s.add_dependency 'sass-rails', '~> 4.0.0'
   s.add_dependency 'pg'
   s.add_dependency 'coffee-rails'
   s.add_dependency 'ember-rails'
