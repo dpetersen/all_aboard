@@ -7,4 +7,7 @@ AllAboard.Router.map ()->
   @resource('source', path: '/source/:source_id')
 
   @resource('boards')
-  @resource('board', path: '/board/:board_id')
+  @resource('board', path: '/board/:board_id', ->
+    @resource('slides')
+    @resource('slide', path: '/slide/:slide_id')
+  )

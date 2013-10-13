@@ -8,5 +8,9 @@ module AllAboard::Api
       slides = AllAboard::Slide.where(id: params[:ids]).order(:position)
       respond_with slides, each_serializer: AllAboard::SlideSerializer
     end
+
+    def show
+      respond_with AllAboard::Slide.find(params[:id])
+    end
   end
 end

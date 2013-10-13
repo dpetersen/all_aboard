@@ -11,7 +11,7 @@ AllAboard::Engine.routes.draw do
     resources :sources, only: [ :index, :show ]
     resources :configurable_attributes, only: [ :update ]
     resources :boards, only: [ :index, :create, :show ]
-    resources :slides, only: [ :index ]
+    resources :slides, only: [ :index, :show ]
   end
 
   match "/gridster" => "gridster#index", via: :get

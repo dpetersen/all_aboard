@@ -7,7 +7,7 @@
     {{#each board in model}}
       <li>
         {{#if board.id}}
-          {{#link-to "board" board}}{{board.name}}{{/link-to}}
+          {{#link-to "slides" board}}{{board.name}}{{/link-to}}
         {{else}}
           Saving {{board.name}}...
         {{/if}}
