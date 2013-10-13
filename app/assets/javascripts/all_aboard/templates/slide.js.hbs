@@ -2,13 +2,15 @@ I am displaying a slide with id {{id}}!
 
 
 {{#if perspectiveAssignments}}
-  <ul>
-    {{#each perspectiveAssignments}}
-      <li>
-        Assignment: {{template_id}}, column: {{column}}, row: {{row}}
-      </li>
-    {{/each}}
-  </ul>
+  <div class="gridster">
+    <ul>
+      {{#each perspectiveAssignments}}
+        <li {{bind-attr data-row=row data-col=column}} data-sizex="1" data-sizey="2">
+          Assignment: {{templateHack}}, column: {{column}}, row: {{row}}
+        </li>
+      {{/each}}
+    </ul>
+  </div>
 {{else}}
   No perspectives.
 {{/if}}

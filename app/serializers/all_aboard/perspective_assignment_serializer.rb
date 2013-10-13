@@ -1,5 +1,9 @@
 module AllAboard
   class PerspectiveAssignmentSerializer < ActiveModel::Serializer
-    attributes :id, :template_id, :column, :row
+    attributes :id, :template, :column, :row
+
+    def template
+      object.template_id
+    end
   end
 end

@@ -13,7 +13,7 @@ describe AllAboard::PerspectiveAssignmentSerializer do
   subject { serializer.as_json[:perspective_assignment] }
 
   its([:id]) { should eq(assignment.id) }
-  its([:template_id]) { should eq("source:perspective:1x1") }
+  its([:template]) { should eq("source:perspective:1x1") }
   its([:column]) { should eq(1) }
   its([:row]) { should eq(2) }
 end
