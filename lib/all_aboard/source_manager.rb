@@ -39,7 +39,9 @@ module AllAboard
       Dir.entries(app_source_directory).each do |source_name|
         next if source_name == "." || source_name == ".."
 
-        @sources << source_name.classify.constantize # triggers autoloading
+        klass = source_name.classify.constantize
+        klass.filesystem_path(app_source_directory.join(source_name))
+        @sources << klass
       end
 
       @sources_loaded = true

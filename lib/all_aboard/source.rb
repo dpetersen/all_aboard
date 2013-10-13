@@ -3,5 +3,6 @@ module AllAboard
     include Configuration
     include Serialization
     include Jobs
+    include FilesystemPath
   end
 end
