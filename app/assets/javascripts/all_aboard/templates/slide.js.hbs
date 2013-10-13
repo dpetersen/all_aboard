@@ -1,1 +1,14 @@
 I am displaying a slide with id {{id}}!
+
+
+{{#if perspectiveAssignments}}
+  <ul>
+    {{#each perspectiveAssignments}}
+      <li>
+        Assignment: {{template_id}}, column: {{column}}, row: {{row}}
+      </li>
+    {{/each}}
+  </ul>
+{{else}}
+  No perspectives.
+{{/if}}

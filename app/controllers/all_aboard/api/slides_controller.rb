@@ -6,11 +6,23 @@ module AllAboard::Api
 
     def index
       slides = AllAboard::Slide.where(id: params[:ids]).order(:position)
-      respond_with slides, each_serializer: AllAboard::SlideSerializer
+      all_assignments = slides.map(&:perspective_assignments).flatten
+
+      respond_with(
+        slides: ActiveModel::ArraySerializer.new(slides),
+        perspective_assignments: ActiveModel::ArraySerializer.new(all_assignments)
+      )
     end
 
     def show
-      respond_with AllAboard::Slide.find(params[:id])
+      slide = AllAboard::Slide.find(params[:id])
+
+      respond_with(
+        slide: AllAboard::SlideSerializer.new(slide, root: false),
+        perspective_assignments: ActiveModel::ArraySerializer.new(
+          slide.perspective_assignments
+        )
+      )
     end
   end
 end
