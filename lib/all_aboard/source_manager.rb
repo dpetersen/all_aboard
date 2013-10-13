@@ -16,6 +16,10 @@ module AllAboard
       @sources
     end
 
+    def find_by_id(id)
+      sources.detect { |source| source.id.to_s == id.to_s }
+    end
+
     def queue_for_frequency(frequency)
       sources.each do |source|
         source.jobs_for_frequency(frequency).each do |job|

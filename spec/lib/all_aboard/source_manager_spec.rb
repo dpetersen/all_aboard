@@ -34,4 +34,9 @@ describe AllAboard::SourceManager do
       expect(TimeSource::UpdateTimeJob).to have_queued.in(:all_aboard_job)
     end
   end
+
+  describe "#find_by_id" do
+    subject { AllAboard::SourceManager.instance.find_by_id("time") }
+    it { should eq(TimeSource) }
+  end
 end

@@ -5,8 +5,8 @@ I am displaying a slide with id {{id}}!
   <div class="gridster">
     <ul>
       {{#each perspectiveAssignments}}
-        <li {{bind-attr data-row=row data-col=column}} data-sizex="1" data-sizey="2">
-          Assignment: {{templateHack}}, column: {{column}}, row: {{row}}
+        <li {{bind-attr data-row=row data-col=column data-sizex='templateHack.width' data-sizey='templateHack.height'}}>
+          Assignment: {{templateHack.id}}, column: {{column}}, row: {{row}}
         </li>
       {{/each}}
     </ul>

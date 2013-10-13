@@ -33,12 +33,23 @@ describe "/api/slides/*" do
       it "returns the expected PerspectiveAssignments" do
         expect(assignments.length).to eq(1)
         expect(assignments.first["id"]).to eq(assignment.id)
+        expect(assignments.first["template"]).to eq(assignment.template_id)
+      end
+    end
+
+    describe "sideloaded Templates" do
+      let(:assignments) { hash["templates"] }
+
+      it "returns the expected PerspectiveAssignments" do
+        expect(assignments.length).to eq(1)
+        expect(assignments.first["id"]).to eq(assignment.template_id)
       end
     end
   end
 
   describe "/api/slides/:id.json" do
     let!(:slide) { FactoryGirl.create(:slide) }
+    let!(:assignment) { FactoryGirl.create(:perspective_assignment, slide: slide) }
     before { FactoryGirl.create(:perspective_assignment, slide: slide) }
     let(:response) { get "/all_aboard/api/slides/#{slide.id}.json" }
     subject(:hash) { JSON.parse(response.body) }
@@ -50,7 +61,16 @@ describe "/api/slides/*" do
 
     describe "sideloaded PerspectiveAssignments" do
       subject { hash["perspective_assignments"] }
-      its(:length) { should eq(1) }
+      its(:length) { should eq(2) }
+    end
+
+    describe "sideloaded Templates" do
+      let(:templates) { hash["templates"] }
+
+      it "returns the expected Templates" do
+        expect(templates.length).to eq(1)
+        expect(templates.first["id"]).to eq(assignment.template_id)
+      end
     end
   end
 end
