@@ -14,5 +14,6 @@ AllAboard::Engine.routes.draw do
     resources :slides, only: [ :index ]
   end
 
+  match "/gridster" => "gridster#index", via: :get
   root to: "boards#index"
 end
