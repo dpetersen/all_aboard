@@ -15,7 +15,7 @@ describe "/api/sources*" do
       it "returns the expected sources" do
         expect(sources.length).to eq(1)
         expect(sources.first["id"]).to eq("time")
-        expect(sources.first["configurableAttributes"]).to eq([ "time.timezone" ])
+        expect(sources.first["configurableAttributes"]).to eq([ "time:timezone" ])
       end
     end
 
@@ -24,7 +24,7 @@ describe "/api/sources*" do
 
       it "returns the expected configurable attributes" do
         expect(attributes.length).to eq(1)
-        expect(attributes.first["id"]).to eq("time.timezone")
+        expect(attributes.first["id"]).to eq("time:timezone")
       end
     end
   end
@@ -42,7 +42,7 @@ describe "/api/sources*" do
 
       it "returns the expected source" do
         expect(source["id"]).to eq("time")
-        expect(source["configurableAttributes"]).to eq([ "time.timezone" ])
+        expect(source["configurableAttributes"]).to eq([ "time:timezone" ])
       end
     end
 
@@ -51,7 +51,7 @@ describe "/api/sources*" do
 
       it "returns the expected configurable attributes" do
         expect(attributes.length).to eq(1)
-        expect(attributes.first["id"]).to eq("time.timezone")
+        expect(attributes.first["id"]).to eq("time:timezone")
       end
     end
   end

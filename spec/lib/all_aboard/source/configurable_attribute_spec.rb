@@ -3,7 +3,7 @@ require 'spec_helper'
 describe AllAboard::Source::ConfigurableAttribute do
   describe "basic attributes" do
     subject { AllAboard::Source::ConfigurableAttribute.new("parent", :key) }
-    its(:id) { should eq("parent.key") }
+    its(:id) { should eq("parent:key") }
     its(:key) { should eq(:key) }
   end
 
@@ -66,7 +66,7 @@ describe AllAboard::Source::ConfigurableAttribute do
     before { attribute.value = "value" }
     subject { attribute.as_json }
 
-    its([:id]) { should eq("parent.key") }
+    its([:id]) { should eq("parent:key") }
     its([:key]) { should eq(:key) }
     its([:name]) { should eq("Name") }
     its([:description]) { should eq("Description") }

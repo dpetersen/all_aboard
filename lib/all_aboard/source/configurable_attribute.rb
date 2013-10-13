@@ -3,7 +3,7 @@ class AllAboard::Source::ConfigurableAttribute
   attr_accessor :value
 
   def initialize(parent_id, key, name = nil, description = nil)
-    @id = "#{parent_id}.#{key}"
+    @id = "#{parent_id}:#{key}"
     @key, @description = key, description
     @name = name || key.to_s.humanize
   end

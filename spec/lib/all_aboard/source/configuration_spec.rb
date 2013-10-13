@@ -16,7 +16,7 @@ describe AllAboard::Source do
 
       describe "a basic ConfigurableAttribute" do
         subject { configurable_attributes.first }
-        its(:id) { should eq("configuration_spec.first") }
+        its(:id) { should eq("configuration_spec:first") }
         its(:key) { should eq(:first) }
         its(:name) { should eq("First") }
         its(:value) { should be_nil }
@@ -24,7 +24,7 @@ describe AllAboard::Source do
 
       describe "a ConfigurableAttribute with a name" do
         subject { configurable_attributes.second }
-        its(:id) { should eq("configuration_spec.second") }
+        its(:id) { should eq("configuration_spec:second") }
         its(:key) { should eq(:second) }
         its(:name) { should eq("Named") }
         its(:value) { should be_nil }
@@ -32,7 +32,7 @@ describe AllAboard::Source do
 
       describe "a ConfigurableAttribute with a description" do
         subject { configurable_attributes.third }
-        its(:id) { should eq("configuration_spec.third") }
+        its(:id) { should eq("configuration_spec:third") }
         its(:key) { should eq(:third) }
         its(:description) { should eq("Description") }
         its(:value) { should be_nil }
@@ -40,7 +40,15 @@ describe AllAboard::Source do
     end
 
     context "when the attributes have been configured" do
-      it "pulls those out of the db or whatever"
+      before do
+        AllAboard::ConfigurableAttributeValue.create!(
+          configurable_attribute_id: "configuration_spec:first",
+          value: "PST"
+        )
+      end
+      subject { configurable_attributes.first }
+
+      its(:value) { should eq("PST") }
     end
   end
 end

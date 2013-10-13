@@ -1,11 +1,9 @@
 <h3>Source: {{name}}</h3>
 
 <ul>
-  {{#each configurableAttributes}}
+  {{#each configurableAttribute in configurableAttributes}}
     <li>
-      Name: {{name}}
-      Description: {{description}}
-      Value: {{value}}
+      {{render "configurableAttribute" configurableAttribute}}
     </li>
   {{/each}}
 </ul>

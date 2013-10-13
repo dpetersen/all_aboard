@@ -11,6 +11,6 @@ describe AllAboard::Source do
 
     its([:id]) { should eq("serialization_spec") }
     its([:name]) { should eq("SerializationSpec") }
-    its([:configurableAttributes]) { should eq([ "serialization_spec.key" ]) }
+    its([:configurableAttributes]) { should eq([ "serialization_spec:key" ]) }
   end
 end
