@@ -5,13 +5,16 @@ end
 
 require 'thin'
 require 'json'
-require 'resque_spec'
 
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../dummy/config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
+
+silence_warnings do
+  require 'resque_spec'
+end
 
 require 'capybara'
 require 'factory_girl_rails'
