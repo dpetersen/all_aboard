@@ -18,6 +18,8 @@ module AllAboard::Api
 
     def show
       respond_with AllAboard::Board.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      render nothing: true, status: :not_found
     end
 
   protected

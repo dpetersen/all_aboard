@@ -33,7 +33,10 @@ describe "/api/boards*" do
 
     context "when no board exists" do
       let(:response) { get "/all_aboard/api/boards/nonexistant.json" }
-      it "returns a 404"
+
+      it "returns a 404 response status" do
+        expect(response.status).to eq(404)
+      end
     end
 
     context "when the board exists" do
