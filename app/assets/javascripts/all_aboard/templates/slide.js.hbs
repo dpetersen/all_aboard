@@ -1,8 +1,7 @@
 I am displaying a slide with id {{id}}!
 
-
 {{#if perspectiveAssignments}}
-  <div class="gridster">
+  <div class="gridster" {{bind-attr class="assignmentsSaving"}}>
     <ul>
       {{#each perspectiveAssignments}}
         <li {{bind-attr data-row=row data-col=column data-sizex='templateHack.width' data-sizey='templateHack.height'}}>

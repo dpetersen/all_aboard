@@ -1,5 +1,9 @@
 #= require jquery.gridster
 
-.gridster ul > li{
+.gridster ul > li {
   border: 1px solid red;
+}
+
+.gridster.assignments-saving {
+  background-color: #ff0000;
 }
