@@ -22,4 +22,15 @@ describe "Manage Slide", :js do
       expect(items[1]["data-col"]).to eq("3")
     end
   end
+
+  it "can remove an assigned perspective" do
+    FactoryGirl.create(:perspective_assignment, slide: slide)
+    visit all_aboard.root_path + "board/#{board.id}/slide/#{slide.id}"
+    expect(page).to have_content("I am the current time")
+    within(".gridster ul") do
+      click_button ("X")
+    end
+
+    expect(page).to have_no_content("I am the current time")
+  end
 end

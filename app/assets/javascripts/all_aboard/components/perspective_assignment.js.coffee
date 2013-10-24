@@ -1,4 +1,4 @@
-AllAboard.PerspectiveAssignmentView = Em.View.extend
+AllAboard.PerspectiveAssignmentComponent = Em.Component.extend
   tagName: "li"
   attributeBindings: [
     "assignment.row:data-row",
@@ -13,3 +13,9 @@ AllAboard.PerspectiveAssignmentView = Em.View.extend
 
   didInsertElement: ->
     @get("parentView").reordered()
+
+  actions:
+    remove: ->
+      assignment = @get("assignment")
+      assignment.deleteRecord()
+      assignment.save()

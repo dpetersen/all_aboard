@@ -16,6 +16,12 @@ module AllAboard::Api
         update_attributes!(update_assignment_params)
     end
 
+    def destroy
+      respond_with AllAboard::PerspectiveAssignment.
+        find(params[:id]).
+        destroy
+    end
+
   protected
 
     def create_assignment_params

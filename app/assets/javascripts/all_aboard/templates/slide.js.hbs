@@ -9,7 +9,7 @@ I am displaying a slide with id {{id}}!
     <div class="gridster" {{bind-attr class="assignmentsSaving"}}>
       <ul>
         {{#each perspectiveAssignments}}
-          {{view AllAboard.PerspectiveAssignmentView assignmentBinding="this"}}
+          {{perspective-assignment assignmentBinding="this"}}
         {{/each}}
       </ul>
     </div>

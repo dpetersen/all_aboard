@@ -46,3 +46,18 @@ describe "PUT /api/perspective_assignments/:id.json" do
     expect(assignment.reload.row).to eq(19)
   end
 end
+
+describe "DELETE /api/perspective_assignments/:id.json" do
+  let!(:assignment) { FactoryGirl.create(:perspective_assignment, row: 1) }
+  let!(:response) do
+    delete("/all_aboard/api/perspective_assignments/#{assignment.id}.json")
+  end
+
+  it "returns a success response status" do
+    expect(response.status).to eq(204)
+  end
+
+  it "deletes the PerspectiveAssignment" do
+    expect(AllAboard::PerspectiveAssignment.count).to be_zero
+  end
+end
