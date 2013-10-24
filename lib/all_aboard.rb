@@ -1,4 +1,3 @@
-require 'sass-rails'
 require 'coffee-rails'
 require 'haml'
 require 'ember-rails'
