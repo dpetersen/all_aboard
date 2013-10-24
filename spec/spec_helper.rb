@@ -3,6 +3,7 @@ if ENV["CI"]
   CodeClimate::TestReporter.start
 end
 
+require 'pry'
 require 'thin'
 require 'json'
 
