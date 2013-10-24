@@ -1,13 +1,15 @@
 I am displaying a slide with id {{id}}!
 
+{{#link-to "new_perspective_assignment" this}}Add stuff{{/link-to}}
+
+{{outlet}}
+
 <div class="slide">
   {{#if perspectiveAssignments}}
     <div class="gridster" {{bind-attr class="assignmentsSaving"}}>
       <ul>
         {{#each perspectiveAssignments}}
-          <li {{bind-attr data-row=row data-col=column data-sizex='templateHack.width' data-sizey='templateHack.height'}}>
-            {{view templateNameBinding="templateHack.templateName"}}
-          </li>
+          {{view AllAboard.PerspectiveAssignmentView assignmentBinding="this"}}
         {{/each}}
       </ul>
     </div>

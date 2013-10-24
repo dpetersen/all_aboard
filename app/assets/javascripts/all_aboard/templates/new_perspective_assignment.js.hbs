@@ -1,0 +1,24 @@
+<h3>Perspectives</h3>
+
+<ol>
+  {{#each source in model}}
+    <li>{{source.name}}</li>
+
+    <ul>
+      {{#each source.perspectives}}
+        <li>
+          {{name}}
+          <em>{{description}}</em>
+
+          <ul>
+            {{#each templates}}
+              <li>
+                <button {{action 'assign' this}}>{{width}}x{{height}}</button>
+              </li>
+            {{/each}}
+          </ul>
+        </li>
+      {{/each}}
+    </ul>
+  {{/each}}
+</ol>

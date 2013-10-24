@@ -12,7 +12,7 @@ AllAboard::Engine.routes.draw do
     resources :configurable_attributes, only: [ :update ]
     resources :boards, only: [ :index, :create, :show ]
     resources :slides, only: [ :index, :show ]
-    resources :perspective_assignments, only: [ :update ]
+    resources :perspective_assignments, only: [ :create, :update ]
   end
 
   match "/gridster" => "gridster#index", via: :get
