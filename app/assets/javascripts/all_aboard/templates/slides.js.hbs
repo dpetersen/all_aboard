@@ -1,1 +1,7 @@
-You do not have any slides, but I am a helpful message.
+{{#if slideInFlight}}
+  Saving...
+{{else}}
+  You have no slides.  I&apos;m a helpful message about what you need to do.  Basically you need to hit this button and get on with it.
+
+  <button {{action "createSlide"}}>Get Started</button>
+{{/if}}

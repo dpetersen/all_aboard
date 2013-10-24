@@ -6,7 +6,7 @@ describe "View Board", :js do
   context "with no associated Slides" do
     it "tells you what is going on" do
       visit all_aboard.root_path + "board/#{board.id}/slides"
-      expect(page).to have_content("do not have any slides")
+      expect(page).to have_content("have no slides")
     end
   end
 

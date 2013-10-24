@@ -15,6 +15,12 @@ module AllAboard::Api
       )
     end
 
+    def create
+      board = AllAboard::Board.find(params[:slide][:board])
+      params[:slide].delete(:board)
+      respond_with board.slides.create!(create_slide_params), location: nil
+    end
+
     def show
       slide = AllAboard::Slide.find(params[:id])
 
@@ -28,6 +34,10 @@ module AllAboard::Api
     end
 
   protected
+
+    def create_slide_params
+      params.require(:slide).permit(:position)
+    end
 
     def templates_for_assignments(assignments)
       assignments.map(&:template_id).uniq.map do |combined_id|
