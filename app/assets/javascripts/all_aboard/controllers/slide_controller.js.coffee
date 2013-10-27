@@ -11,4 +11,4 @@ AllAboard.SlideController = Em.ObjectController.extend
 
   updateAssignment: (assignment, column, row) ->
     assignment.setProperties(column: column, row: row)
-    assignment.save() if assignment.get("isDirty")
+    assignment.save() if assignment.get("isDirty") && assignment.get("id")

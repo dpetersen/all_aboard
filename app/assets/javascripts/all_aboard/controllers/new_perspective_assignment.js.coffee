@@ -11,5 +11,4 @@ AllAboard.NewPerspectiveAssignmentController = Em.ArrayController.extend
           template: template,
           column: 1,
           row: 1
-        ).save().then (assignment) ->
-          slide.get("perspectiveAssignments").addObject(assignment)
+        ).save()

@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'coffee-rails'
   s.add_dependency 'sass-rails'
   s.add_dependency 'ember-rails'
-  s.add_dependency 'ember-source', '1.0.0'
+  s.add_dependency 'ember-source', '1.1.2'
   s.add_dependency 'ember-data-source', '1.0.0.beta.3'
   s.add_dependency 'haml'
   s.add_dependency 'active_model_serializers'
