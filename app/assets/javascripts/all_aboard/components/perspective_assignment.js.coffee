@@ -18,4 +18,5 @@ AllAboard.PerspectiveAssignmentComponent = Em.Component.extend
     remove: ->
       assignment = @get("assignment")
       assignment.deleteRecord()
+      @get("slide.perspectiveAssignments").removeObject(assignment)
       assignment.save()
