@@ -14,4 +14,13 @@ class AllAboard::Perspective::Job
       @frequency
     end
   end
+
+  def self.perform(perspective_assignment_id)
+    assignment = AllAboard::PerspectiveAssignment.find(perspective_assignment_id)
+    new(assignment).perform
+  end
+
+  def initialize(perspective_assignment)
+    @perspective_assignment = perspective_assignment
+  end
 end
