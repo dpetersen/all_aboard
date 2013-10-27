@@ -1,6 +1,6 @@
 module AllAboard
   class PerspectiveAssignment < ActiveRecord::Base
-    include Source
+    include AssociatedSource
     include JobExecution
     include JobData
 

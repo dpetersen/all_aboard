@@ -1,4 +1,4 @@
-module AllAboard::PerspectiveAssignment::Source
+module AllAboard::PerspectiveAssignment::AssociatedSource
   extend ActiveSupport::Concern
 
   def source
