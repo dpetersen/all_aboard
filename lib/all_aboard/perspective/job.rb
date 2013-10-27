@@ -1,4 +1,4 @@
-class AllAboard::Source::Job
+class AllAboard::Perspective::Job
   def self.inherited(subclass)
     subclass.instance_variable_set(:@queue, :all_aboard_job)
   end

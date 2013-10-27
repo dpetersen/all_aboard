@@ -20,14 +20,6 @@ module AllAboard
       sources.detect { |source| source.id.to_s == id.to_s }
     end
 
-    def queue_for_frequency(frequency)
-      sources.each do |source|
-        source.jobs_for_frequency(frequency).each do |job|
-          Resque.enqueue(job)
-        end
-      end
-    end
-
   protected
 
   # This probably looks weird to you, and you're right.  Unfortunately, (in

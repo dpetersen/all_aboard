@@ -5,7 +5,12 @@ module AllAboard::Source::Perspectives
     def perspective(filename, options = {})
       @perspectives ||= []
       @perspectives << AllAboard::Source::Perspective.new(
-        id, filename, options[:name], options[:description], options[:configurable]
+        id,
+        filename,
+        options[:name],
+        options[:description],
+        options[:configurable],
+        options[:jobs]
       )
     end
 

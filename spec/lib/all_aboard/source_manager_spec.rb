@@ -23,18 +23,6 @@ describe AllAboard::SourceManager do
     it { should include(TimeSource) }
   end
 
-  describe "#queue_for_frequency" do
-    before do
-      AllAboard::SourceManager.instance.queue_for_frequency(
-        AllAboard::Source::Job::EVERY_10_MINUTELY
-      )
-    end
-
-    it "queues the expected jobs" do
-      expect(TimeSource::UpdateTimeJob).to have_queued.in(:all_aboard_job)
-    end
-  end
-
   describe "#find_by_id" do
     subject { AllAboard::SourceManager.instance.find_by_id("time") }
     it { should eq(TimeSource) }

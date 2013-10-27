@@ -1,5 +1,13 @@
 require 'spec_helper'
 
+class PerspectiveSpecJob < AllAboard::Perspective::Job
+  frequency AllAboard::Perspective::Job::HOURLY
+end
+
+class PerspectiveSpecJobTwo < AllAboard::Perspective::Job
+  frequency AllAboard::Perspective::Job::EVERY_10_MINUTELY
+end
+
 describe AllAboard::Source::Perspective do
   describe "#id" do
     subject { AllAboard::Source::Perspective.new("source", :filename).id }
@@ -63,6 +71,24 @@ describe AllAboard::Source::Perspective do
       AllAboard::Source::Perspective.new("source", :filename, nil, nil, { test: { key: :value } })
     end
     it { should eq({ test: { key: :value } }) }
+  end
+
+  describe "#jobs_for_frequency" do
+    subject { perspective.jobs_for_frequency(frequency) }
+    let(:jobs) { [ PerspectiveSpecJob, PerspectiveSpecJobTwo ] }
+    let(:perspective) do
+      AllAboard::Source::Perspective.new("source", :filename, nil, nil, nil, jobs)
+    end
+
+    context "with a frequency that is scheduled" do
+      let(:frequency) { AllAboard::Perspective::Job::HOURLY }
+      it { should eq([ PerspectiveSpecJob ]) }
+    end
+
+    context "with a frequency that it not scheduled" do
+      let(:frequency) { AllAboard::Perspective::Job::DAILY }
+      it { should be_empty }
+    end
   end
 
   describe "#as_json" do
