@@ -12,7 +12,8 @@ module AllAboard::Api
         slides: ActiveModel::ArraySerializer.new(slides),
         perspective_assignments: ActiveModel::ArraySerializer.new(all_assignments),
         configurable_attributes: configurable_attributes_for(all_assignments),
-        templates: templates_for_assignments(all_assignments)
+        templates: templates_for_assignments(all_assignments),
+        payloads: payload_for_assignments(all_assignments)
       )
     end
 
@@ -30,7 +31,8 @@ module AllAboard::Api
         slide: AllAboard::SlideSerializer.new(slide, root: false),
         perspective_assignments: ActiveModel::ArraySerializer.new(assignments),
         configurable_attributes: configurable_attributes_for(assignments),
-        templates: templates_for_assignments(assignments)
+        templates: templates_for_assignments(assignments),
+        payloads: payload_for_assignments(assignments)
       )
     end
 
@@ -51,6 +53,15 @@ module AllAboard::Api
 
     def configurable_attributes_for(assignments)
       assignments.map(&:configurable_attributes).flatten
+    end
+
+    def payload_for_assignments(assignments)
+      assignments.map do |assignment|
+        {
+          id: assignment.data_key,
+          value: assignment.current_data
+        }
+      end
     end
   end
 end

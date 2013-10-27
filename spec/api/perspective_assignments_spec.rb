@@ -27,6 +27,15 @@ describe "POST /api/perspective_assignments.json" do
     expect(assignment.column).to eq(2)
     expect(assignment.template_id).to eq("time:current_time:2x1")
   end
+
+  it "responds with the associated payload" do
+    assignment = AllAboard::PerspectiveAssignment.first
+    h = JSON.parse(response.body)
+    expect(h["perspective_assignment"]["payload"]).to eq(assignment.data_key)
+    expect(h["payloads"].length).to eq(1)
+    expect(h["payloads"].first["id"]).to eq(assignment.data_key)
+    expect(h["payloads"].first["value"]).to be_empty
+  end
 end
 
 describe "PUT /api/perspective_assignments/:id.json" do

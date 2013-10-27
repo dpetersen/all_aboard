@@ -16,4 +16,5 @@ describe AllAboard::PerspectiveAssignmentSerializer do
   its([:template]) { should eq("time:current_time:2x1") }
   its([:column]) { should eq(1) }
   its([:row]) { should eq(2) }
+  its([:payload]) { should eq(assignment.data_key) }
 end

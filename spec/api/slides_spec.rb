@@ -8,6 +8,7 @@ describe "GET /api/slides.json" do
     get "/all_aboard/api/slides.json?ids[]=#{first.id}&ids[]=#{second.id}"
   end
   let(:hash) { JSON.parse(response.body) }
+  before { assignment.update_data(key: "value") }
   subject { hash }
 
   it "returns a success response status" do
@@ -36,6 +37,7 @@ describe "GET /api/slides.json" do
       expect(assignments.first["configurableAttributes"]).to eq(
         [ "time:current_time:#{assignment.id}:format" ]
       )
+      expect(assignments.first["payload"]).to eq(assignment.data_key)
     end
   end
 
@@ -56,13 +58,24 @@ describe "GET /api/slides.json" do
       expect(attributes.first["id"]).to eq("time:current_time:#{assignment.id}:format")
     end
   end
+
+  describe "sideloaded payloads" do
+    let(:attributes) { hash["payloads"] }
+
+    it "returns the expected datum" do
+      expect(attributes.length).to eq(1)
+      expect(attributes.first["id"]).to eq(assignment.data_key)
+      expect(attributes.first["value"]).to eq("key" => "value")
+    end
+  end
 end
 
 describe "GET /api/slides/:id.json" do
   let!(:slide) { FactoryGirl.create(:slide) }
   let!(:assignment) { FactoryGirl.create(:perspective_assignment, slide: slide) }
-  before { FactoryGirl.create(:perspective_assignment, slide: slide) }
+  let!(:assignment2) { FactoryGirl.create(:perspective_assignment, slide: slide) }
   let(:response) { get "/all_aboard/api/slides/#{slide.id}.json" }
+  before { assignment.update_data(key: "value") }
   subject(:hash) { JSON.parse(response.body) }
 
   describe "slides" do
@@ -81,6 +94,18 @@ describe "GET /api/slides/:id.json" do
     it "returns the expected Templates" do
       expect(templates.length).to eq(1)
       expect(templates.first["id"]).to eq(assignment.template_id)
+    end
+  end
+
+  describe "sideloaded payload" do
+    let(:attributes) { hash["payloads"] }
+
+    it "returns the expected datum" do
+      expect(attributes.length).to eq(2)
+      expect(attributes.first["id"]).to eq(assignment2.data_key)
+      expect(attributes.first["value"]).to be_empty
+      expect(attributes.second["id"]).to eq(assignment.data_key)
+      expect(attributes.second["value"]).to eq("key" => "value")
     end
   end
 end

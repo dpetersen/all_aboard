@@ -16,10 +16,17 @@ describe AllAboard::PerspectiveAssignment do
   end
 
   describe "#current_data" do
-    let(:data) { { key: "value" }.to_json }
-    before { AllAboard.redis.set("data:#{assignment.id}", data) }
     subject { assignment.current_data }
 
-    it { should eq("key" => "value") }
+    context "when the data has been set" do
+      let(:data) { { key: "value" }.to_json }
+      before { AllAboard.redis.set("data:#{assignment.id}", data) }
+
+      it { should eq("key" => "value") }
+    end
+
+    context "when no data has been set" do
+      it { should be_empty }
+    end
   end
 end

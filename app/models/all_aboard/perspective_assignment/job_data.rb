@@ -7,10 +7,10 @@ module AllAboard::PerspectiveAssignment::JobData
 
   def current_data
     json = AllAboard.redis.get(data_key)
+    return {} if json.nil?
+
     JSON.parse(json)
   end
-
-protected
 
   def data_key
     "data:#{id}"

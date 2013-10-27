@@ -26,6 +26,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'haml'
   s.add_dependency 'active_model_serializers'
   s.add_dependency 'resque'
+  s.add_dependency 'redis'
 
   s.add_development_dependency 'thin'
   s.add_development_dependency 'rspec-rails'
@@ -39,5 +40,4 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'guard-rspec'
   s.add_development_dependency 'codeclimate-test-reporter'
   s.add_development_dependency 'resque_spec'
-  s.add_development_dependency 'fakeredis'
 end
