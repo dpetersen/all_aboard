@@ -1,6 +1,30 @@
 require 'spec_helper'
 
-describe "/api/configurable_attributes/:id.json" do
+describe "GET /api/configurable_attributes.json" do
+  let(:assignment) { FactoryGirl.create(:perspective_assignment) }
+  let(:id) { "time:current_time:#{assignment.id}:format" }
+  let(:response) do
+    get(
+      all_aboard.api_configurable_attributes_path(format: :json),
+      ids: [ id ]
+    )
+  end
+  subject(:hash) { JSON.parse(response.body)["configurable_attributes"] }
+  before do
+    AllAboard::ConfigurableAttributeValue.create!(
+      configurable_attribute_id: id,
+      value: "value"
+    )
+  end
+
+  it "returns the expected configurable attributes" do
+    expect(hash.length).to eq(1)
+    expect(hash.first["id"]).to eq(id)
+    expect(hash.first["value"]).to eq("value")
+  end
+end
+
+describe "PUT /api/configurable_attributes/:id.json" do
   let(:response) do
     put(
       all_aboard.api_configurable_attribute_path("source:key", format: :json),

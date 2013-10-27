@@ -11,6 +11,7 @@ module AllAboard::Api
       respond_with(
         slides: ActiveModel::ArraySerializer.new(slides),
         perspective_assignments: ActiveModel::ArraySerializer.new(all_assignments),
+        configurable_attributes: configurable_attributes_for(all_assignments),
         templates: templates_for_assignments(all_assignments)
       )
     end
@@ -23,13 +24,13 @@ module AllAboard::Api
 
     def show
       slide = AllAboard::Slide.find(params[:id])
+      assignments = slide.perspective_assignments
 
       respond_with(
         slide: AllAboard::SlideSerializer.new(slide, root: false),
-        perspective_assignments: ActiveModel::ArraySerializer.new(
-          slide.perspective_assignments
-        ),
-        templates: templates_for_assignments(slide.perspective_assignments)
+        perspective_assignments: ActiveModel::ArraySerializer.new(assignments),
+        configurable_attributes: configurable_attributes_for(assignments),
+        templates: templates_for_assignments(assignments)
       )
     end
 
@@ -40,17 +41,16 @@ module AllAboard::Api
     end
 
     def templates_for_assignments(assignments)
-      assignments.map(&:template_id).uniq.map do |combined_id|
-        source_id, perspective_id, dimensions = combined_id.split(":")
-        source = AllAboard::SourceManager.instance.find_by_id(source_id)
-        perspective = source.perspectives.detect do |p|
-          p.id.end_with?(perspective_id)
-        end
-
-        perspective.templates.detect do |t|
+      assignments.map do |assignment|
+        dimensions = assignment.template_id.split(":").last
+        assignment.perspective.templates.detect do |t|
           t.id.end_with?(dimensions)
         end
-      end
+      end.uniq
+    end
+
+    def configurable_attributes_for(assignments)
+      assignments.map(&:configurable_attributes).flatten
     end
   end
 end

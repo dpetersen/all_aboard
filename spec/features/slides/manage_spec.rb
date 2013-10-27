@@ -44,5 +44,16 @@ describe "Manage Slide", :js do
 
       expect(page).to have_no_content("I am the current time")
     end
+
+    it "can configure an assigned perspective" do
+      FactoryGirl.create(:perspective_assignment, slide: slide)
+      visit all_aboard.root_path + "board/#{board.id}/slide/#{slide.id}"
+      fill_in "Format", with: "My Favorite Format"
+      click_button "Save"
+      expect(page).to have_field("Format", with: "My Favorite Format")
+
+      visit all_aboard.root_path + "board/#{board.id}/slide/#{slide.id}"
+      expect(page).to have_field("Format", with: "My Favorite Format")
+    end
   end
 end

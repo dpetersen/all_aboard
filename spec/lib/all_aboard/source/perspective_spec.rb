@@ -57,6 +57,14 @@ describe AllAboard::Source::Perspective do
     end
   end
 
+  describe "#configurable" do
+    subject { perspective.configurable }
+    let(:perspective) do
+      AllAboard::Source::Perspective.new("source", :filename, nil, nil, { test: { key: :value } })
+    end
+    it { should eq({ test: { key: :value } }) }
+  end
+
   describe "#as_json" do
     let(:perspective) do
       AllAboard::Source::Perspective.new("source", :filename, "Name", "Description")

@@ -3,5 +3,12 @@ class TimeSource < AllAboard::Source
 
   job TimeSource::UpdateTimeJob
 
-  perspective :current_time, name: "Current Time", description: "The current time."
+  perspective(
+    :current_time,
+    name: "Current Time",
+    description: "The current time.",
+    configurable:  {
+      format: { description: "The ActiveSupport TimeFormat" }
+    }
+  )
 end

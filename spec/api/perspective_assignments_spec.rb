@@ -10,7 +10,7 @@ describe "POST /api/perspective_assignments.json" do
         slide: slide.id,
         row: 1,
         column: 2,
-        template: "template:id"
+        template: "time:current_time:2x1"
       }
     )
   end
@@ -25,7 +25,7 @@ describe "POST /api/perspective_assignments.json" do
     expect(assignment.slide).to eq(slide)
     expect(assignment.row).to eq(1)
     expect(assignment.column).to eq(2)
-    expect(assignment.template_id).to eq("template:id")
+    expect(assignment.template_id).to eq("time:current_time:2x1")
   end
 end
 

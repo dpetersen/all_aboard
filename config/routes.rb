@@ -9,7 +9,7 @@ AllAboard::Engine.routes.draw do
 
   namespace :api do
     resources :sources, only: [ :index, :show ]
-    resources :configurable_attributes, only: [ :update ]
+    resources :configurable_attributes, only: [ :index, :update ]
     resources :boards, only: [ :index, :create, :show ]
     resources :slides, only: [ :index, :create, :show ]
     resources :perspective_assignments, only: [ :create, :update, :destroy ]

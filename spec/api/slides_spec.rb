@@ -33,6 +33,9 @@ describe "GET /api/slides.json" do
       expect(assignments.length).to eq(1)
       expect(assignments.first["id"]).to eq(assignment.id)
       expect(assignments.first["template"]).to eq(assignment.template_id)
+      expect(assignments.first["configurableAttributes"]).to eq(
+        [ "time:current_time:#{assignment.id}:format" ]
+      )
     end
   end
 
@@ -42,6 +45,15 @@ describe "GET /api/slides.json" do
     it "returns the expected PerspectiveAssignments" do
       expect(assignments.length).to eq(1)
       expect(assignments.first["id"]).to eq(assignment.template_id)
+    end
+  end
+
+  describe "sideloaded configurable attributes" do
+    let(:attributes) { hash["configurable_attributes"] }
+
+    it "returns the expected configurable attributes" do
+      expect(attributes.length).to eq(1)
+      expect(attributes.first["id"]).to eq("time:current_time:#{assignment.id}:format")
     end
   end
 end

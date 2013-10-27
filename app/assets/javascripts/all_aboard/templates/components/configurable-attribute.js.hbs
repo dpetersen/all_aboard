@@ -1,0 +1,11 @@
+<form>
+  <label>
+    {{attribute.name}}
+    {{input type="text" valueBinding="attribute.value"}}
+  </label>
+  <em>{{attribute.description}}</em>
+
+  {{#if attribute.isDirty}}
+    {{input type="submit" value="Save"}}
+  {{/if}}
+</form>

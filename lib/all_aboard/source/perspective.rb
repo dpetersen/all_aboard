@@ -1,12 +1,13 @@
 class AllAboard::Source::Perspective
-  attr_reader :id, :filename, :name, :description
+  attr_reader :id, :filename, :name, :description, :configurable
 
-  def initialize(parent_id, filename, name = nil, description = nil)
+  def initialize(parent_id, filename, name = nil, description = nil, configurable = nil)
     @id = "#{parent_id}:#{filename}"
     @filename = filename
     @name = name || filename.to_s
     @description = description
     @templates = []
+    @configurable = configurable
   end
 
   def add_template(width, height, markup)

@@ -1,6 +1,12 @@
 <div>
   <strong>I am a wrapper.</strong>
   <button {{action "remove"}}>X</button>
+  <h3>Assignable</h3>
+  <dl>
+    {{#each configurableAttribute in assignment.configurableAttributes}}
+      {{configurable-attribute attributeBinding="configurableAttribute"}}
+    {{/each}}
+  </dl>
 
   {{view Em.View templateNameBinding='templateName'}}
 </div>
