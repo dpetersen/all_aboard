@@ -8,4 +8,11 @@ require 'resque'
 require "all_aboard/engine"
 
 module AllAboard
+  def self.redis
+    @redis
+  end
+
+  def self.redis=(redis)
+    @redis = redis
+  end
 end

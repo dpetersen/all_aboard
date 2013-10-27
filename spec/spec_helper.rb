@@ -18,6 +18,7 @@ silence_warnings do
 end
 
 require 'capybara'
+require 'fakeredis/rspec'
 require 'factory_girl_rails'
 require 'shoulda-matchers'
 

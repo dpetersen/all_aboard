@@ -9,4 +9,5 @@ A (work in progress) flexible status board as a Rails engine.
 
 #### TODO:
 
-  * Document the overridden helper that you have to do, along with the fact that it sort of executes in the Engine's constants, so some stuff might not work so hot.
+  * Document the overridden helper around permissions that you have to do, along with the fact that it sort of executes in the Engine's constants, so some stuff might not work so hot.
+  * Document how you have to tell AllAboard what redis to use.
