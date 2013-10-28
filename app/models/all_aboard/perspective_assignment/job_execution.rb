@@ -9,7 +9,7 @@ module AllAboard::PerspectiveAssignment::JobExecution
 
   def queue_for_frequency(frequency)
     perspective.jobs_for_frequency(frequency).each do |job|
-      Resque.enqueue(job)
+      Resque.enqueue(job, self.id)
     end
   end
 end

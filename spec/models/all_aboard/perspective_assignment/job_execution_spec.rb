@@ -14,12 +14,10 @@ module AllAboard
       end
 
       it "queues the expected jobs" do
-        expect(TimeSource::UpdateTimeJob).to have_queued.in(
-          :all_aboard_job, assignment1.id
-        )
-        expect(TimeSource::UpdateTimeJob).to have_queued.in(
-          :all_aboard_job, assignment2.id
-        )
+        expect(TimeSource::UpdateTimeJob).to have_queued(assignment1.id).
+          in(:all_aboard_job)
+        expect(TimeSource::UpdateTimeJob).to have_queued(assignment2.id)
+          .in(:all_aboard_job)
       end
     end
 
@@ -33,9 +31,8 @@ module AllAboard
       end
 
       it "queues the expected jobs" do
-        expect(TimeSource::UpdateTimeJob).to have_queued.in(
-          :all_aboard_job, assignment.id
-        )
+        expect(TimeSource::UpdateTimeJob).to have_queued(assignment.id).
+          in(:all_aboard_job)
       end
     end
   end
