@@ -1,4 +1,4 @@
-# desc "Explaining what the task does"
-# task :all_aboard do
-#   # Task goes here
-# end
+require 'resque/tasks'
+
+# Load the environment for jobs
+task "resque:setup" => :environment

@@ -110,6 +110,9 @@ GEM
     handlebars-source (1.0.12)
     hike (1.2.3)
     i18n (0.6.5)
+    jquery-rails (3.0.4)
+      railties (>= 3.0, < 5.0)
+      thor (>= 0.14, < 2.0)
     json (1.8.0)
     listen (2.0.1)
       celluloid (>= 0.15.2)
@@ -169,6 +172,12 @@ GEM
       redis-namespace (~> 1.2)
       sinatra (>= 0.9.2)
       vegas (~> 0.1.2)
+    resque-web (0.0.3)
+      coffee-rails
+      jquery-rails
+      resque
+      sass-rails
+      twitter-bootstrap-rails
     resque_spec (0.14.2)
       resque (>= 1.19.0)
       rspec-core (>= 2.5.0)
@@ -226,6 +235,11 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
+    twitter-bootstrap-rails (2.2.8)
+      actionpack (>= 3.1)
+      execjs
+      rails (>= 3.1)
+      railties (>= 3.1)
     tzinfo (0.3.37)
     vegas (0.1.11)
       rack (>= 1.0.0)
@@ -247,6 +261,7 @@ DEPENDENCIES
   json
   poltergeist
   pry
+  resque-web
   resque_spec
   rspec-rails
   shoulda-matchers

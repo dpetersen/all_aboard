@@ -10,8 +10,11 @@ gemspec
 # wondering why nothing is going into your redis database.  I'm only requiring
 # this gem in my spec_helper, but somehow it's overriding the real redis gem as
 # soon as it gets required, which is what I assume is happening when I call
-# 'gemspec' above.
+# 'gemspec' above.  Same deal with resque_spec.  Boy was that fun to troubleshoot!
 gem 'fakeredis', require: nil
+gem 'resque_spec', require: nil
+
+gem 'resque-web', require: 'resque_web'
 
 # Declare any dependencies that are still in development here instead of in
 # your gemspec. These might include edge Rails or gems from your path or
