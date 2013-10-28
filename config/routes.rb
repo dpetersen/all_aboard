@@ -13,6 +13,7 @@ AllAboard::Engine.routes.draw do
     resources :boards, only: [ :index, :create, :show ]
     resources :slides, only: [ :index, :create, :show ]
     resources :perspective_assignments, only: [ :create, :update, :destroy ]
+    resources :updates, only: :index
   end
 
   match "/gridster" => "gridster#index", via: :get

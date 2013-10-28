@@ -26,6 +26,18 @@ window.AllAboard = Em.Application.create
   # to: "/boards/1".
   rootURL: "<%= AllAboard::Engine.routes.url_helpers.root_path.chop %>"
 
+  # The URL to fetch data updates.  I can't see a good way to get get
+  # ember-data to make a single API call to fetch this data on its own.
+  updateURL: "<%= AllAboard::Engine.routes.url_helpers.api_updates_path %>"
+
+  updateFetchInterval: <%=
+    case Rails.env
+    when "development" then 2000
+    when "test" then 500
+    else 5000
+    end
+  %>
+
   #LOG_TRANSITIONS: true
   #LOG_TRANSITIONS_INTERNAL: true
 
