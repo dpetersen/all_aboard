@@ -9,13 +9,14 @@ class JobSpecJob < AllAboard::Perspective::Job
 end
 
 describe AllAboard::Perspective::Job do
+  let(:assignment) { FactoryGirl.build(:perspective_assignment) }
+
   describe ".frenquency" do
     subject { JobSpecJob.frequency }
     it { should eq(AllAboard::Perspective::Job::HOURLY) }
   end
 
   describe ".perform" do
-    let(:assignment) { FactoryGirl.build(:perspective_assignment) }
     let(:job) { double(perform: nil, data: { key: "value" }) }
     before do
       AllAboard::PerspectiveAssignment.stub(find: assignment)
@@ -42,11 +43,23 @@ describe AllAboard::Perspective::Job do
   end
 
   describe "#data" do
-    let(:assignment) { FactoryGirl.create(:perspective_assignment) }
     let(:job) { JobSpecJob.new(assignment) }
     before { job.perform }
     subject { job.data }
 
     its([:key]) { should eq("data about #{assignment.id}!") }
+  end
+
+  describe "#config" do
+    let(:job) { JobSpecJob.new(assignment) }
+    before do
+      AllAboard::ConfigurableAttributeValue.create!(
+        configurable_attribute_id: "time:current_time:#{assignment.id}:format",
+        value: "value"
+      )
+    end
+    subject { job.config }
+    its("assignment.format") { should eq("value") }
+    its("source.timezone") { should be_nil }
   end
 end

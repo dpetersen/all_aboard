@@ -33,4 +33,27 @@ class AllAboard::Perspective::Job
       @data
     end
   end
+
+  class ConfigHelper
+    attr_reader :source, :assignment
+
+    def initialize(source, assignment)
+      @source = attributes_to_helper(source)
+      @assignment = attributes_to_helper(assignment)
+    end
+
+  protected
+
+    def attributes_to_helper(attributes)
+      AllAboard::ConfigurableAttributesHelper.new(attributes)
+    end
+  end
+
+  def config
+    @config ||=
+      ConfigHelper.new(
+        @perspective_assignment.source.configurable_attributes,
+        @perspective_assignment.configurable_attributes
+      )
+  end
 end

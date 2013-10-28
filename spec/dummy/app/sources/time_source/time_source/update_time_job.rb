@@ -3,18 +3,15 @@ class TimeSource::UpdateTimeJob < AllAboard::Perspective::Job
 
   def perform
     # TODO: Should really be handled by defaults in the attribute definition
-    zone_name = @perspective_assignment.source.configurable_attributes.first.value
-    zone_name ||= "America/Los_Angeles"
+    timezone = config.source.timezone || "America/Los_Angeles"
+    format = config.assignment.format || "short"
 
-    format_name = @perspective_assignment.configurable_attributes.first.value
-    format_name ||= "short"
-
-    time = Time.now.in_time_zone(zone_name)
+    time = Time.now.in_time_zone(timezone)
 
     data(
-      time: time.to_s(format_name.to_sym),
-      zone: zone_name,
-      format: format_name
+      time: time.to_s(format.to_sym),
+      timezone: timezone,
+      format: format
     )
   end
 end
