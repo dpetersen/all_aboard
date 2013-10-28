@@ -17,6 +17,8 @@ describe "View Slide", :js do
         :perspective_assignment,
         slide: slide, template_id: "time:current_time:2x1", column: 3, row: 4
       )
+      AllAboard::PerspectiveAssignment.queue_for_frequency(:every_10_minutely)
+      ResqueSpec.perform_all(:all_aboard_job)
     end
 
     it "shows the assigned perspective" do
