@@ -22,6 +22,19 @@ module AllAboard::Api
         value: params[:configurable_attribute][:value]
       )
 
+      elements = elements = params[:id].split(":")
+      case elements.length
+      when 4
+        assignment_id = elements.third
+        assignment = AllAboard::PerspectiveAssignment.find(assignment_id)
+        assignment.queue_for_all_frequencies
+      when 2
+        source_id = params[:id].split(":").first
+        AllAboard::PerspectiveAssignment.
+          where("template_id LIKE '#{source_id}:%'").
+          each(&:queue_for_all_frequencies)
+      end
+
       respond_with attribute_value
     end
   end

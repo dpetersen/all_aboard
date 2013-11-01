@@ -7,6 +7,8 @@ class AllAboard::Perspective::Job
   DAILY = :daily
   EVERY_10_MINUTELY = :every_10_minutely
 
+  FREQUENCIES = [ HOURLY, DAILY, EVERY_10_MINUTELY ]
+
   def self.frequency(schedule = nil)
     if schedule
       @frequency = schedule

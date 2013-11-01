@@ -35,5 +35,15 @@ module AllAboard
           in(:all_aboard_job)
       end
     end
+
+    describe "#queue_for_all_frequencies" do
+      let(:assignment) { FactoryGirl.create(:perspective_assignment) }
+      before { assignment.queue_for_all_frequencies }
+
+      it "queues the expected jobs" do
+        expect(TimeSource::UpdateTimeJob).to have_queued(assignment.id).
+          in(:all_aboard_job)
+      end
+    end
   end
 end

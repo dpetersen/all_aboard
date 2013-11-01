@@ -36,6 +36,11 @@ describe "POST /api/perspective_assignments.json" do
     expect(h["payloads"].first["id"]).to eq(assignment.data_key)
     expect(h["payloads"].first["value"]).to be_empty
   end
+
+  it "queues jobs that are associated with the assignment" do
+    assignment = AllAboard::PerspectiveAssignment.first
+    expect(TimeSource::UpdateTimeJob).to have_queued(assignment.id)
+  end
 end
 
 describe "PUT /api/perspective_assignments/:id.json" do
@@ -53,6 +58,12 @@ describe "PUT /api/perspective_assignments/:id.json" do
 
   it "updates the expected PerspectiveAssignment" do
     expect(assignment.reload.row).to eq(19)
+  end
+
+  # As far as I remember, this action is only called when you move an
+  # assignment around.  That doesn't change the data.
+  it "does not queue jobs that are associated with the assignment" do
+    expect(TimeSource::UpdateTimeJob).to_not have_queued(assignment.id)
   end
 end
 
