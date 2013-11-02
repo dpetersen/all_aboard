@@ -1,0 +1,10 @@
+<h2>Configuring {{id}}</h2>
+
+<h3>Assignable</h3>
+<dl>
+  {{#each configurableAttributes}}
+    {{configurable-attribute attributeBinding="this"}}
+  {{/each}}
+</dl>
+
+{{#link-to "slide" slide}}Close{{/link-to}}

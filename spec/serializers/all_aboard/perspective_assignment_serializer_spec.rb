@@ -17,4 +17,5 @@ describe AllAboard::PerspectiveAssignmentSerializer do
   its([:column]) { should eq(1) }
   its([:row]) { should eq(2) }
   its([:payload_id]) { should eq(assignment.data_key) }
+  its([:slide_id]) { should eq(assignment.slide.id) }
 end

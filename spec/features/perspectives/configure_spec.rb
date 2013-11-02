@@ -7,11 +7,14 @@ describe "Configure perspective assignments", :js do
   it "can configure an assigned perspective" do
     FactoryGirl.create(:perspective_assignment, slide: slide)
     visit all_aboard.root_path + "board/#{board.id}/slide/#{slide.id}"
+
+    click_link "Configure"
     fill_in "Format", with: "My Favorite Format"
     click_button "Save"
     expect(page).to have_field("Format", with: "My Favorite Format")
 
-    visit all_aboard.root_path + "board/#{board.id}/slide/#{slide.id}"
-    expect(page).to have_field("Format", with: "My Favorite Format")
+    click_link "Close"
+    expect(page).to have_no_field("Format")
+    expect(page).to have_content("I am the current time")
   end
 end
