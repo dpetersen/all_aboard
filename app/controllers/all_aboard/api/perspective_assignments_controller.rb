@@ -5,7 +5,7 @@ module AllAboard::Api
     respond_to :json
 
     def create
-      slide_id = params[:perspective_assignment].delete(:slide)
+      slide_id = params[:perspective_assignment].delete(:slide_id)
       slide = AllAboard::Slide.find(slide_id)
       assignment = slide.perspective_assignments.create!(create_assignment_params)
       assignment.queue_for_all_frequencies
@@ -33,11 +33,11 @@ module AllAboard::Api
   protected
 
     def create_assignment_params
-      params.require(:perspective_assignment).permit(:slide, :column, :row, :template)
+      params.require(:perspective_assignment).permit(:slide_id, :column, :row, :template_id)
     end
 
     def update_assignment_params
-      params.require(:perspective_assignment).permit(:column, :row, :template)
+      params.require(:perspective_assignment).permit(:column, :row, :template_id)
     end
   end
 end

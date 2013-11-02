@@ -41,7 +41,7 @@ window.AllAboard = Em.Application.create
   #LOG_TRANSITIONS: true
   #LOG_TRANSITIONS_INTERNAL: true
 
-AllAboard.ApplicationAdapter = DS.RESTAdapter.extend
+AllAboard.ApplicationAdapter = DS.ActiveModelAdapter.extend
   # My karate coding style is not elegant, but it is awesome.  Store URL can't
   # start with a slash, despite what it seems to say in the docs.
   namespace: "<%= AllAboard::Engine.routes.url_helpers.root_path.reverse.chop.reverse + "api" %>"

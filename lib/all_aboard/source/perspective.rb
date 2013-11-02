@@ -28,7 +28,7 @@ class AllAboard::Source::Perspective
       id: id,
       name: name,
       description: description,
-      templates: @templates.map(&:id)
+      template_ids: @templates.map(&:id)
     }
   end
 end

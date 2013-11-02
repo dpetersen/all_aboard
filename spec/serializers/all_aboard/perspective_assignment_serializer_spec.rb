@@ -13,8 +13,8 @@ describe AllAboard::PerspectiveAssignmentSerializer do
   subject { serializer.as_json[:perspective_assignment] }
 
   its([:id]) { should eq(assignment.id) }
-  its([:template]) { should eq("time:current_time:2x1") }
+  its([:template_id]) { should eq("time:current_time:2x1") }
   its([:column]) { should eq(1) }
   its([:row]) { should eq(2) }
-  its([:payload]) { should eq(assignment.data_key) }
+  its([:payload_id]) { should eq(assignment.data_key) }
 end

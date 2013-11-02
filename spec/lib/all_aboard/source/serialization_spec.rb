@@ -8,7 +8,7 @@ describe AllAboard::Source do
 
     its([:id]) { should eq("time") }
     its([:name]) { should eq("Time") }
-    its([:configurableAttributes]) { should eq([ "time:timezone" ]) }
-    its([:perspectives]) { should eq([ "time:current_time" ]) }
+    its([:configurable_attribute_ids]) { should eq([ "time:timezone" ]) }
+    its([:perspective_ids]) { should eq([ "time:current_time" ]) }
   end
 end

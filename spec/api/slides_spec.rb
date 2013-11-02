@@ -21,9 +21,9 @@ describe "GET /api/slides.json" do
     it "returns all of the slides" do
       expect(slides.length).to eq(2)
       expect(slides.first["id"]).to eq(first.id)
-      expect(slides.first["perspectiveAssignments"]).to eq([ assignment.id ])
+      expect(slides.first["perspective_assignment_ids"]).to eq([ assignment.id ])
       expect(slides.second["id"]).to eq(second.id)
-      expect(slides.second["perspectiveAssignments"]).to be_empty
+      expect(slides.second["perspective_assignment_ids"]).to be_empty
     end
   end
 
@@ -33,11 +33,11 @@ describe "GET /api/slides.json" do
     it "returns the expected PerspectiveAssignments" do
       expect(assignments.length).to eq(1)
       expect(assignments.first["id"]).to eq(assignment.id)
-      expect(assignments.first["template"]).to eq(assignment.template_id)
-      expect(assignments.first["configurableAttributes"]).to eq(
+      expect(assignments.first["template_id"]).to eq(assignment.template_id)
+      expect(assignments.first["configurable_attribute_ids"]).to eq(
         [ "time:current_time:#{assignment.id}:format" ]
       )
-      expect(assignments.first["payload"]).to eq(assignment.data_key)
+      expect(assignments.first["payload_id"]).to eq(assignment.data_key)
     end
   end
 
@@ -113,7 +113,7 @@ end
 describe "POST /api/slides.json" do
   let!(:board) { FactoryGirl.create(:board) }
   let(:response) do
-    post("/all_aboard/api/slides.json", slide: { board: board.id, position: 19 })
+    post("/all_aboard/api/slides.json", slide: { board_id: board.id, position: 19 })
   end
 
   it "returns a succcessful response code" do

@@ -18,8 +18,9 @@ module AllAboard::Api
     end
 
     def create
-      board = AllAboard::Board.find(params[:slide][:board])
-      params[:slide].delete(:board)
+      board_id = params[:slide].delete(:board_id)
+      board = AllAboard::Board.find(board_id)
+
       respond_with board.slides.create!(create_slide_params), location: nil
     end
 

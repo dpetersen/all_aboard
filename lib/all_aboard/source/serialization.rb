@@ -10,8 +10,8 @@ module AllAboard::Source::Serialization
       {
         id: id,
         name: name_without_suffix,
-        configurableAttributes: configurable_attributes.map(&:id),
-        perspectives: perspectives.map(&:id)
+        configurable_attribute_ids: configurable_attributes.map(&:id),
+        perspective_ids: perspectives.map(&:id)
       }
     end
 

@@ -101,6 +101,6 @@ describe AllAboard::Source::Perspective do
     its([:id]) { should eq("source:filename") }
     its([:name]) { should eq("Name") }
     its([:description]) { should eq("Description") }
-    its([:templates]) { should eq([ "source:filename:1x2" ]) }
+    its([:template_ids]) { should eq([ "source:filename:1x2" ]) }
   end
 end

@@ -1,16 +1,12 @@
 module AllAboard
   class PerspectiveAssignmentSerializer < ActiveModel::Serializer
-    attributes :id, :template, :column, :row, :configurableAttributes, :payload
+    attributes :id, :column, :row, :payload_id, :template_id, :configurable_attribute_ids
 
-    def configurableAttributes
+    def configurable_attribute_ids
       object.configurable_attributes.map(&:id)
     end
 
-    def template
-      object.template_id
-    end
-
-    def payload
+    def payload_id
       object.data_key
     end
   end

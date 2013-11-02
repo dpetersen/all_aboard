@@ -6,10 +6,10 @@ describe AllAboard::BoardSerializer do
 
   its([:id]) { should eq(board.id) }
   its([:name]) { should eq("Test Board Name") }
-  its([:slides]) { should be_empty }
+  its([:slide_ids]) { should be_empty }
 
   context "with associated slides" do
     let!(:slide) { FactoryGirl.create(:slide, board: board) }
-    its([:slides]) { should eq([ slide.id ]) }
+    its([:slide_ids]) { should eq([ slide.id ]) }
   end
 end

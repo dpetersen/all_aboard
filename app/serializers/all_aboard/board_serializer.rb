@@ -1,6 +1,7 @@
 module AllAboard
   class BoardSerializer < ActiveModel::Serializer
-    has_many :slides, key: :slides, embed: :ids
+    embed :ids
+    has_many :slides
 
     attributes :id, :name
   end

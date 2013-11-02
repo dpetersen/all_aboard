@@ -7,10 +7,10 @@ describe "POST /api/perspective_assignments.json" do
     post(
       "/all_aboard/api/perspective_assignments.json",
       perspective_assignment: {
-        slide: slide.id,
+        slide_id: slide.id,
         row: 1,
         column: 2,
-        template: "time:current_time:2x1"
+        template_id: "time:current_time:2x1"
       }
     )
   end
@@ -31,7 +31,7 @@ describe "POST /api/perspective_assignments.json" do
   it "responds with the associated payload" do
     assignment = AllAboard::PerspectiveAssignment.first
     h = JSON.parse(response.body)
-    expect(h["perspective_assignment"]["payload"]).to eq(assignment.data_key)
+    expect(h["perspective_assignment"]["payload_id"]).to eq(assignment.data_key)
     expect(h["payloads"].length).to eq(1)
     expect(h["payloads"].first["id"]).to eq(assignment.data_key)
     expect(h["payloads"].first["value"]).to be_empty
