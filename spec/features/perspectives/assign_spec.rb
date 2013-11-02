@@ -11,8 +11,14 @@ describe "Manage perspective assignment", :js do
     click_link "Add stuff"
     click_button "2x1"
     expect(page).to have_content("I am the current time")
-
     click_button "2x1"
+
+    # Has to stay commented until we fix the "two clicks and you're out" bug:
+    # https://www.pivotaltracker.com/story/show/59505760
+    #click_link "Close"
+    #expect(page).to have_no_button("2x1")
+    #expect(page).to have_content("I am the current time")
+
     visit all_aboard.root_path + "board/#{board.id}/slide/#{slide.id}"
     within(".gridster ul") do
       items = page.all("li")
@@ -21,6 +27,7 @@ describe "Manage perspective assignment", :js do
       expect(items[1]["data-row"]).to eq("1")
       expect(items[1]["data-col"]).to eq("3")
     end
+
   end
 
   it "can remove an assigned perspective" do
