@@ -8,7 +8,7 @@ describe "Source view", :js do
   end
 
   it "can link to a source directly" do
-    visit all_aboard.root_path + "source/time"
+    visit all_aboard.root_path + "sources/time"
     expect(page).to have_content("Timezone")
     expect(page).to have_content("Current Time")
     expect(page).to have_content("The current time")

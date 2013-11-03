@@ -1,7 +1,15 @@
-<h3>Sources</h3>
+<div class="page-header">
+  <h1>Sources</h1>
+</div>
 
-<ol>
-  {{#each source in model}}
-    <li>{{#link-to "source" source}}{{source.name}}{{/link-to}}</li>
-  {{/each}}
-</ol>
+<div id="sources">
+  <div class="list" class="list-group">
+    {{#each source in model}}
+      {{#link-to "source" source class="list-group-item"}}{{source.name}}{{/link-to}}
+    {{/each}}
+  </div>
+
+  <div class="view">
+    {{outlet}}
+  </div>
+</div>

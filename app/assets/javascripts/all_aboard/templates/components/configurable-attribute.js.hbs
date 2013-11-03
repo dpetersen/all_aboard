@@ -1,11 +1,13 @@
-<form>
-  <label>
-    {{attribute.name}}
-    {{input type="text" valueBinding="attribute.value"}}
-  </label>
-  <em>{{attribute.description}}</em>
+<form role="form">
+  <div class="form-group">
+    <label>
+      {{attribute.name}}
+      {{input type="text" valueBinding="attribute.value" class="form-control"}}
+    </label>
+    {{#if attribute.isDirty}}
+      {{input type="submit" value="Save" class="btn btn-default"}}
+    {{/if}}
+    <p class="help-block">{{attribute.description}}</em>
 
-  {{#if attribute.isDirty}}
-    {{input type="submit" value="Save"}}
-  {{/if}}
+  </div>
 </form>
