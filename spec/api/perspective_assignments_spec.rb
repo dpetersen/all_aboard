@@ -37,6 +37,17 @@ describe "POST /api/perspective_assignments.json" do
     expect(h["payloads"].first["value"]).to be_empty
   end
 
+  it "responds with the associated configurable attributes" do
+    assignment = AllAboard::PerspectiveAssignment.first
+    attribute_id = "time:current_time:#{assignment.id}:format"
+    h = JSON.parse(response.body)
+    expect(h["perspective_assignment"]["configurable_attribute_ids"]).to eq(
+      [ attribute_id ]
+    )
+    expect(h["configurable_attributes"].length).to eq(1)
+    expect(h["configurable_attributes"].first["id"]).to eq(attribute_id)
+  end
+
   it "queues jobs that are associated with the assignment" do
     assignment = AllAboard::PerspectiveAssignment.first
     expect(TimeSource::UpdateTimeJob).to have_queued(assignment.id)

@@ -14,7 +14,8 @@ module AllAboard::Api
         perspective_assignment: AllAboard::PerspectiveAssignmentSerializer.new(assignment, root: false),
         payloads: [
           { id: assignment.data_key, value: assignment.current_data }
-        ]
+        ],
+        configurable_attributes: assignment.configurable_attributes
       }
       respond_with(response, location: nil)
     end
