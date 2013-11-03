@@ -1,10 +1,13 @@
-<h2>Configuring {{id}}</h2>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h5>Configuring perspective at {{column}}, {{row}}</h5>
+  </div>
 
-<h3>Assignable</h3>
-<dl>
-  {{#each configurableAttributes}}
-    {{configurable-attribute attributeBinding="this"}}
-  {{/each}}
-</dl>
+  <div class="panel-body">
+    {{#each configurableAttributes}}
+      {{configurable-attribute attributeBinding="this"}}
+    {{/each}}
 
-{{#link-to "slide" slide}}Close{{/link-to}}
+    {{#link-to "slide" slide class="btn btn-default"}}Close{{/link-to}}
+  </div>
+</div>
