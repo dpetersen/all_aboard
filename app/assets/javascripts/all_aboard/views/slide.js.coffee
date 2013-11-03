@@ -17,13 +17,15 @@ AllAboard.SlideView = Em.View.extend
       draggable:
         stop: => @reordered()
 
+    if @get("controller.perspectiveAssignments.length") == 0
+      @get("controller").set("showPerspectivePalette", true)
+
   assignmentsSavingChanged: ( ->
     return null unless @gridster()?
 
     if @get("controller.assignmentsSaving")
       @gridster().disable()
-    else
-      @gridster().enable()
+    else @gridster().enable()
   ).observes("controller.assignmentsSaving")
 
   gridster: ->

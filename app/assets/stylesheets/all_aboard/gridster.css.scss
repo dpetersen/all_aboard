@@ -1,7 +1,7 @@
 #= require jquery.gridster
 
 .gridster ul > li {
-  border: 1px solid red;
+  overflow: hidden;
 }
 
 .gridster.assignments-saving {

@@ -7,7 +7,7 @@ describe "View Slide", :js do
   context "with no PerspectiveAssignments" do
     it "shows a helpful message" do
       visit all_aboard.root_path + "board/#{board.id}/slide/#{slide.id}"
-      expect(page).to have_content("No perspectives")
+      expect(page).to have_content("to add perspectives")
     end
   end
 

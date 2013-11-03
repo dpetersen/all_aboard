@@ -1,4 +1,28 @@
-.slide {
-  width: 940px;
-  border: 1px solid #00ff00;
+.perspective-assignment {
+  background-color: #468966;
+  height: 100%;
+
+  .manage {
+    display: none;
+    position: absolute;
+    width: 100%;
+    bottom: 8px;
+    right: 8px;
+    text-align: right;
+
+    a {
+      font-size: 150%;
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+
+  &:hover {
+    .manage {
+      display: block;
+    }
+  }
+
+  .body {
+  }
 }

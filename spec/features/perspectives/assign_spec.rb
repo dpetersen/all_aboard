@@ -6,7 +6,6 @@ describe "Manage perspective assignment", :js do
 
   it "can assign perspectives" do
     visit all_aboard.root_path + "board/#{board.id}/slide/#{slide.id}"
-    click_button "Show Palette"
     click_button "2x1"
     expect(page).to have_content("I am the current time")
     click_button "2x1"
@@ -33,7 +32,8 @@ describe "Manage perspective assignment", :js do
     visit all_aboard.root_path + "board/#{board.id}/slide/#{slide.id}"
     expect(page).to have_content("I am the current time")
     within(".gridster ul") do
-      click_button ("X")
+      page.first(".perspective-assignment").hover
+      page.first("a.remove").click
     end
 
     expect(page).to have_no_content("I am the current time")

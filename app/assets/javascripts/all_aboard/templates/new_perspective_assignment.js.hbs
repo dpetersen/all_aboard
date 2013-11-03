@@ -1,31 +1,33 @@
 {{#if showPerspectivePalette}}
-  <h3>Perspectives</h3>
-
-  <ol>
-    {{#each source in controller.sources}}
-      <li>{{source.name}}</li>
-
-      <ul>
-        {{#each source.perspectives}}
-          <li>
-            {{name}}
-            <em>{{description}}</em>
-
-            <ul>
-              {{#each templates}}
-                <li>
-                  <button {{action 'assign' this}}>{{width}}x{{height}}</button>
-                </li>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h5>Perspectives</h5>
+    </div>
+    <ul class="list-group">
+      {{#each source in controller.sources}}
+        <li class="list-group-item">
+          <h4 class="list-group-item-heading">{{source.name}}</h4>
+          <p class="list-group-item-text">
+            <dl class="dl-horizontal">
+              {{#each source.perspectives}}
+                <dt>{{name}}</dt>
+                <dd>
+                  {{#each templates}}
+                    <button {{action 'assign' this}} class="btn btn-default">
+                      {{width}}x{{height}}
+                    </button>
+                  {{/each}}
+                </dd>
               {{/each}}
-            </ul>
-          </li>
-        {{/each}}
-      </ul>
-    {{/each}}
-  </ol>
+            </dl>
+          </p>
+        </li>
+      {{/each}}
+    </ul>
+  </div>
 {{/if}}
 
-<button {{action 'togglePerspectivePalette'}}>
+<button {{action 'togglePerspectivePalette'}} class="btn btn-default">
   {{#if showPerspectivePalette}}
     Hide Palette
   {{else}}

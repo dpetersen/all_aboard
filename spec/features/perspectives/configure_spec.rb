@@ -8,7 +8,11 @@ describe "Configure perspective assignments", :js do
     FactoryGirl.create(:perspective_assignment, slide: slide)
     visit all_aboard.root_path + "board/#{board.id}/slide/#{slide.id}"
 
-    click_link "Configure"
+    within(".gridster ul") do
+      page.first(".perspective-assignment").hover
+      page.first("a.configure").click
+    end
+
     fill_in "Format", with: "My Favorite Format"
     click_button "Save"
     expect(page).to have_field("Format", with: "My Favorite Format")

@@ -6,7 +6,7 @@ describe "View Board", :js do
   context "with no associated Slides" do
     it "tells you what is going on" do
       visit all_aboard.root_path + "board/#{board.id}/slides"
-      expect(page).to have_content("have no slides")
+      expect(page).to have_content("a new board")
     end
   end
 
@@ -16,13 +16,13 @@ describe "View Board", :js do
     it "is linked to from the boards page and redirects to the first slide" do
       visit all_aboard.boards_path
       click_link "Test Board"
-      expect(page).to have_content("slide with id #{slide.id}")
+      expect(page).to have_content("to add perspectives")
       expect(current_path).to eq(all_aboard.root_path + "board/#{board.id}/slide/#{slide.id}")
     end
 
     it "can be visited directly with deep linking" do
       visit all_aboard.root_path + "board/#{board.id}/slide/#{slide.id}"
-      expect(page).to have_content("slide with id #{slide.id}")
+      expect(page).to have_content("to add perspectives")
     end
   end
 end
