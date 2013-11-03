@@ -10,7 +10,9 @@ AllAboard.Router.map ()->
   @resource('board', path: '/board/:board_id', ->
     @resource('slides')
     @resource('slide', path: '/slide/:slide_id', ->
-      @resource('new_perspective_assignment')
-      @resource('configure_perspective_assignment', path: '/configure/:assignment_id')
+      @resource(
+        'configure_perspective_assignment',
+        path: '/configure/:assignment_id'
+      )
     )
   )

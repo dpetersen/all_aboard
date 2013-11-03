@@ -1,26 +1,34 @@
-<h3>Perspectives</h3>
+{{#if showPerspectivePalette}}
+  <h3>Perspectives</h3>
 
-<ol>
-  {{#each source in model}}
-    <li>{{source.name}}</li>
+  <ol>
+    {{#each source in controller.sources}}
+      <li>{{source.name}}</li>
 
-    <ul>
-      {{#each source.perspectives}}
-        <li>
-          {{name}}
-          <em>{{description}}</em>
+      <ul>
+        {{#each source.perspectives}}
+          <li>
+            {{name}}
+            <em>{{description}}</em>
 
-          <ul>
-            {{#each templates}}
-              <li>
-                <button {{action 'assign' this}}>{{width}}x{{height}}</button>
-              </li>
-            {{/each}}
-          </ul>
-        </li>
-      {{/each}}
-    </ul>
-  {{/each}}
-</ol>
+            <ul>
+              {{#each templates}}
+                <li>
+                  <button {{action 'assign' this}}>{{width}}x{{height}}</button>
+                </li>
+              {{/each}}
+            </ul>
+          </li>
+        {{/each}}
+      </ul>
+    {{/each}}
+  </ol>
+{{/if}}
 
-{{#link-to "slide" slide}}Close{{/link-to}}
+<button {{action 'togglePerspectivePalette'}}>
+  {{#if showPerspectivePalette}}
+    Hide Palette
+  {{else}}
+    Show Palette
+  {{/if}}
+</button>

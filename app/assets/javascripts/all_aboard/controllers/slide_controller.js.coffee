@@ -1,4 +1,8 @@
 AllAboard.SlideController = Em.ObjectController.extend
+  sources: Em.computed ->
+    @get("store").findAll("source")
+  .property()
+
   assignmentsSaving: Em.computed ->
     @get("perspectiveAssignments").anyBy("isSaving", true)
   .property("perspectiveAssignments.@each.isSaving")
@@ -12,3 +16,22 @@ AllAboard.SlideController = Em.ObjectController.extend
   updateAssignment: (assignment, column, row) ->
     assignment.setProperties(column: column, row: row)
     assignment.save() if assignment.get("isDirty") && assignment.get("id")
+
+  showPerspectivePalette: false
+
+  actions:
+    togglePerspectivePalette: ->
+      if @showPerspectivePalette
+        @set("showPerspectivePalette", false)
+      else
+        @set("showPerspectivePalette", true)
+
+    assign: (template) ->
+      @get("store")
+        .createRecord(
+          "perspectiveAssignment",
+          slide: @get("model"),
+          template: template,
+          column: 1,
+          row: 1
+        ).save()
