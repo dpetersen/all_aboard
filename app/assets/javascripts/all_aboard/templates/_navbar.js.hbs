@@ -1,0 +1,21 @@
+<nav class="navbar navbar-default" role="navigation">
+  <ul class="nav navbar-nav">
+    {{#if authorization.canManageBoards}}
+      <li>
+        {{#link-to "sources"}}Sources{{/link-to}}
+      </li>
+    {{/if}}
+    <li>
+      {{#link-to "boards"}}Boards{{/link-to}}
+    </li>
+  </ul>
+  <ul class="nav navbar-nav navbar-right">
+    <li>
+      {{#if authorization.canManageBoards}}
+        <a {{bind-attr href='authorization.implementingAppLoginPath'}}>Log out</a>
+      {{else}}
+        <a {{bind-attr href='authorization.implementingAppLoginPath'}}>Log in</a>
+      {{/if}}
+    </li>
+  </ul>
+</nav>

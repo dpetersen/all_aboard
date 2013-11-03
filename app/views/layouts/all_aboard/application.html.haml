@@ -3,15 +3,12 @@
 %html
   %head
     %title All Aboard
+    %meta{ name: "viewport", content: "width=device-width, initial-scale=1.0" }
+
     = stylesheet_link_tag    "all_aboard/application", media: "all"
     = javascript_include_tag "all_aboard/application"
     = csrf_meta_tags
 
   %body{ data: body_data }
-    %h1
-      - if can_manage_boards?
-        Logged in!
-      - else
-        Not logged in!
-
-    = yield
+    .container
+      #ember-container

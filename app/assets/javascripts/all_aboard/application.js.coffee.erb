@@ -16,6 +16,8 @@
 Em.LOG_VERSION = false
 
 window.AllAboard = Em.Application.create
+  rootElement: "#ember-container"
+
   ready: ->
     @register('authorization:current', AllAboard.Authorization, singleton: true)
     @inject('controller', 'authorization', 'authorization:current')

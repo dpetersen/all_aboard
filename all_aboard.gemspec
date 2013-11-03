@@ -27,6 +27,8 @@ Gem::Specification.new do |s|
   s.add_dependency 'active_model_serializers'
   s.add_dependency 'resque'
   s.add_dependency 'redis'
+  s.add_dependency 'therubyracer'
+  s.add_dependency 'less-rails-bootstrap'
 
   s.add_development_dependency 'thin'
   s.add_development_dependency 'rspec-rails'
