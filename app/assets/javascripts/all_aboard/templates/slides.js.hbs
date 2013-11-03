@@ -1,7 +1,12 @@
 {{#if slideInFlight}}
-  Saving...
+  <h4>
+    <span class="glyphicon glyphicon-cloud"></span>
+    &nbsp;Enhance...
+  </h4>
 {{else}}
-  You have no slides.  I&apos;m a helpful message about what you need to do.  Basically you need to hit this button and get on with it.
+  <p class="lead">
+    This is a new board.  A board is a grouping of slides, which are single pages of data which are broken up into a grid.  You&apos;ll add perspectives to the grid, which are views to some data with specific dimensions.
+  </p>
 
-  <button {{action "createSlide"}}>Get Started</button>
+  <button {{action "createSlide"}} class="btn btn-default">Get Started</button>
 {{/if}}
