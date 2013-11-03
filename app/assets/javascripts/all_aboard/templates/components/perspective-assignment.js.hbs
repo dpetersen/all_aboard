@@ -1,7 +1,7 @@
 <div>
   <strong>I am a wrapper.</strong>
   <button {{action "remove"}}>X</button>
-  {{#link-to "configure_perspective_assignment" assignment}}Configure{{/link-to}}
+  {{#link-to "configure_perspective_assignment" assignment.id}}Configure{{/link-to}}
 
   {{view Em.View templateNameBinding='templateName' contextBinding="assignment.payload.value"}}
 </div>

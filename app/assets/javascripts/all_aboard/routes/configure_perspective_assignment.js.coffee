@@ -1,3 +1,3 @@
 AllAboard.ConfigurePerspectiveAssignmentRoute = Em.Route.extend
   model: (params) ->
-    @get("store").find("perspective_assignment", params.assignment_id)
+    @get("store").find("perspectiveAssignment", params.assignment_id)

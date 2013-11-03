@@ -10,7 +10,7 @@ AllAboard.NewPerspectiveAssignmentController = Em.ArrayController.extend
       slide = @get("slide")
       @get("store")
         .createRecord(
-          "perspective_assignment",
+          "perspectiveAssignment",
           slide: slide,
           template: template,
           column: 1,
