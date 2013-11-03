@@ -1,9 +1,9 @@
-{{#if authorization.canManageBoards}}
-  {{render newBoard}}
-{{/if}}
+<div class="page-header">
+  <h1>Boards</h1>
+</div>
 
 {{#if model}}
-  <ol>
+  <ul>
     {{#each board in model}}
       <li>
         {{#if board.id}}
@@ -13,7 +13,11 @@
         {{/if}}
       </li>
     {{/each}}
-  </ol>
+  </ul>
 {{else}}
   No boards.
+{{/if}}
+
+{{#if authorization.canManageBoards}}
+  {{render newBoard}}
 {{/if}}

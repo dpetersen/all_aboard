@@ -17,10 +17,6 @@ describe "Board creation", :js do
       click_button "Create"
       expect(page).to have_link("New Board Name")
 
-      # FIXME: There's a bug in AllAboard.SlideRoute that requires me to
-      # refresh the page to follow the link.
-      visit all_aboard.boards_path
-
       click_link "New Board Name"
       within(".board-title") do
         expect(page).to have_content("New Board Name")

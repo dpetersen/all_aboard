@@ -1,7 +1,8 @@
-<form>
-  <label>
-    Name
-    {{input type="text" valueBinding="name"}}
-  </label>
-  {{input type="submit" value="Create"}}
+<form class="well form-inline" role="form">
+  <div class="form-group">
+    <label class="sr-only">Name</label>
+    {{input type="text" name="Name" valueBinding="name" placeholder="New Board Name" class="form-control"}}
+  </div>
+
+  {{input type="submit" value="Create" class="btn btn-default"}}
 </form>
