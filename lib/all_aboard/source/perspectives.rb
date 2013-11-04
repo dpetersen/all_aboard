@@ -17,6 +17,11 @@ module AllAboard::Source::Perspectives
     def perspectives
       return [] if @perspectives.nil?
 
+      unless Rails.env.production?
+        @perspectives.each(&:reset_templates)
+        @templates_loaded = false
+      end
+
       load_templates
       @perspectives
     end

@@ -15,6 +15,10 @@ class AllAboard::Source::Perspective
     @templates << AllAboard::Source::Template.new(@id, width, height, markup)
   end
 
+  def reset_templates
+    @templates = []
+  end
+
   def templates
     @templates
   end

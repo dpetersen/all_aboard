@@ -103,4 +103,17 @@ describe AllAboard::Source::Perspective do
     its([:description]) { should eq("Description") }
     its([:template_ids]) { should eq([ "source:filename:1x2" ]) }
   end
+
+  describe "#reset_templates" do
+    let(:perspective) do
+      AllAboard::Source::Perspective.new("source", :filename, "Name", "Description")
+    end
+    before do
+      perspective.add_template(1, 2, "markup")
+      perspective.reset_templates
+    end
+    subject { perspective.templates }
+
+    it { should be_empty }
+  end
 end
