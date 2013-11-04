@@ -1,11 +1,13 @@
-<div class="panel panel-default">
-  <div class="panel-heading"><h5>Configuration</h5></div>
-  <div class="panel-body">
-    {{#each configurableAttribute in configurableAttributes}}
-      {{configurable-attribute attributeBinding="configurableAttribute"}}
-    {{/each}}
+{{#if configurableAttributes}}
+  <div class="panel panel-default">
+    <div class="panel-heading"><h5>Configuration</h5></div>
+    <div class="panel-body">
+      {{#each configurableAttribute in configurableAttributes}}
+        {{configurable-attribute attributeBinding="configurableAttribute"}}
+      {{/each}}
+    </div>
   </div>
-</div>
+{{/if}}
 
 <div class="panel panel-default">
   <div class="panel-heading"><h5>Perspectives</h5></div>
