@@ -2,14 +2,14 @@
   <h1>Sources</h1>
 </div>
 
-<div id="sources">
-  <div class="list" class="list-group">
+<div class="row" id="sources">
+  <div class="list col-md-4" class="list-group">
     {{#each source in model}}
       {{#link-to "source" source class="list-group-item"}}{{source.name}}{{/link-to}}
     {{/each}}
   </div>
 
-  <div class="view">
+  <div class="view col-md-8">
     {{outlet}}
   </div>
 </div>

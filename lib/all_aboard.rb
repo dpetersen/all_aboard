@@ -1,6 +1,5 @@
 require 'coffee-rails'
 require 'sass-rails'
-require 'less-rails-bootstrap'
 require 'haml'
 require 'ember-rails'
 require 'active_model_serializers'
