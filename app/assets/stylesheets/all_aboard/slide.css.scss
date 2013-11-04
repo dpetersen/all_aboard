@@ -1,8 +1,9 @@
 .perspective-assignment {
   overflow: hidden;
+  display: table;
 
   .manage {
-    display: none;
+    visibility: hidden;
     position: absolute;
     width: 100%;
     bottom: 8px;
@@ -18,11 +19,13 @@
 
   &:hover {
     .manage {
-      display: block;
+     visibility: visible;
     }
   }
 
   .body {
+    display: table-cell;
+    vertical-align: middle;
     text-align: center;
     padding: 15px;
     font-family: 'Open Sans', sans-serif;
