@@ -5,8 +5,17 @@ AllAboard.PerspectiveAssignmentComponent = Em.Component.extend
     "assignment.row:data-row",
     "assignment.column:data-col",
     "assignment.template.width:data-sizex",
-    "assignment.template.height:data-sizey"
+    "assignment.template.height:data-sizey",
+    "inlineStyle:style"
   ]
+
+  backgroundColors: [ "468966", "FFF0A5", "FFB03B", "B64926", "8E2800" ]
+
+  inlineStyle: Em.computed ->
+    i = Math.floor(Math.random() * @backgroundColors.length)
+    color = @backgroundColors[i]
+    "background-color: ##{color}"
+  .property()
 
   templateName: Em.computed ->
     @get("assignment.template.templateName")
