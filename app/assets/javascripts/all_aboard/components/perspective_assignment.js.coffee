@@ -1,5 +1,6 @@
 AllAboard.PerspectiveAssignmentComponent = Em.Component.extend
   tagName: "li"
+  classNames: [ "perspective-assignment" ]
   attributeBindings: [
     "assignment.row:data-row",
     "assignment.column:data-col",

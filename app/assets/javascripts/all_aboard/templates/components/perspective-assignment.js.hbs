@@ -1,17 +1,15 @@
-<div class="perspective-assignment">
-  <div class="manage">
-    <span class="badge">
-      <a class="remove" href="#" {{action "remove"}}>
-        <span class="glyphicon glyphicon-remove"></span>
-      </a>
+<div class="manage">
+  <span class="badge">
+    <a class="remove" href="#" {{action "remove"}}>
+      <span class="glyphicon glyphicon-remove"></span>
+    </a>
 
-      {{#link-to "configure_perspective_assignment" assignment.id class="configure"}}
-        <span class="glyphicon glyphicon-wrench"></span>
-      {{/link-to}}
-    </span>
-  </div>
+    {{#link-to "configure_perspective_assignment" assignment.id class="configure"}}
+      <span class="glyphicon glyphicon-wrench"></span>
+    {{/link-to}}
+  </span>
+</div>
 
-  <div class="body">
-    {{view Em.View templateNameBinding='templateName' contextBinding="assignment.payload.value"}}
-  </div>
+<div class="body">
+  {{view Em.View templateNameBinding='templateName' contextBinding="assignment.payload.value"}}
 </div>
