@@ -7,7 +7,7 @@ class AllAboard::Source::Perspective
     @name = name || filename.to_s
     @description = description
     @templates = []
-    @configurable = configurable
+    @configurable = configurable || []
     @jobs = jobs || []
   end
 
