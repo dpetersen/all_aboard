@@ -9,7 +9,7 @@ AllAboard.PerspectiveAssignmentComponent = Em.Component.extend
     "inlineStyle:style"
   ]
 
-  backgroundColors: [ "468966", "FFF0A5", "FFB03B", "B64926", "8E2800" ]
+  backgroundColors: [ "468966", "FFB03B", "B64926", "8E2800" ]
 
   inlineStyle: Em.computed ->
     i = Math.floor(Math.random() * @backgroundColors.length)
