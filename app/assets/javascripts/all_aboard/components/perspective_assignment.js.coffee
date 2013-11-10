@@ -13,9 +13,11 @@ AllAboard.PerspectiveAssignmentComponent = Em.Component.extend
   backgroundColors: [ "468966", "FFB03B", "B64926", "8E2800" ]
 
   sourceAndPerspective: Em.computed ->
-    # Returning an array doesn't work, but you can add spaces and return class
-    # names for the price of one binding.
-    @get("assignment.template.id").replace(/:/g, " ")
+    segments = @get("assignment.template.id").split(":")
+    dimensionIndex = segments.length - 1
+    dimensions = segments[dimensionIndex]
+    segments[dimensionIndex] = "x#{dimensions}"
+    segments.join(" ")
   .property("assignment.template.id")
 
   inlineStyle: Em.computed ->
