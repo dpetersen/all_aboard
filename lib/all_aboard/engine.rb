@@ -20,7 +20,7 @@ module AllAboard
       g.test_framework :rspec, fixture: false
     end
 
-    initializer 'add source asset paths' do |app|
+    initializer 'add source asset paths', before: "append_asset_paths" do |app|
       AllAboard::SourceManager.instance.sources.each do |source|
         app.config.assets.paths << source.assets_path if source.has_assets?
       end
