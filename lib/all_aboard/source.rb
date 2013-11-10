@@ -4,5 +4,6 @@ module AllAboard
     include Serialization
     include FilesystemPath
     include Perspectives
+    include Assets
   end
 end

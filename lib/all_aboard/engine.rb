@@ -20,6 +20,12 @@ module AllAboard
       g.test_framework :rspec, fixture: false
     end
 
+    initializer 'add source asset paths' do |app|
+      AllAboard::SourceManager.instance.sources.each do |source|
+        app.config.assets.paths << source.assets_path if source.has_assets?
+      end
+    end
+
     initializer "configure ember-rails", before: "ember_rails.setup_vendor" do
       variant = Rails.env.production? ? :production : :development
       config.ember.variant = variant

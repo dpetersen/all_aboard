@@ -1,0 +1,10 @@
+//= require_self
+//= require all_aboard/gridster
+//= require all_aboard/slide
+<% AllAboard::SourceManager.instance.sources.each do |source| %>
+  <% if source.has_stylesheets? %>
+    <% source.stylesheet_paths.each do |path| %>
+      <% require_asset path %>
+    <% end %>
+  <% end %>
+<% end %>
