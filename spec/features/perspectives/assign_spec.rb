@@ -24,7 +24,6 @@ describe "Manage perspective assignment", :js do
       expect(items[1]["data-row"]).to eq("1")
       expect(items[1]["data-col"]).to eq("3")
     end
-
   end
 
   it "can remove an assigned perspective" do

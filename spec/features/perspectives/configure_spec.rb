@@ -3,9 +3,11 @@ require 'spec_helper'
 describe "Configure perspective assignments", :js do
   let!(:board) { FactoryGirl.create(:board, name: "Test Board") }
   let!(:slide) { FactoryGirl.create(:slide, board: board) }
+  before do
+    FactoryGirl.create(:perspective_assignment, slide: slide)
+  end
 
   it "can configure an assigned perspective" do
-    FactoryGirl.create(:perspective_assignment, slide: slide)
     visit all_aboard.root_path + "board/#{board.id}/slide/#{slide.id}"
 
     within(".gridster ul") do
