@@ -21,6 +21,6 @@ describe AllAboard::Source do
   describe ".stylesheet_paths" do
     subject { TimeSource.stylesheet_paths }
     its(:length) { should eq(1) }
-    its(:first) { should eq("stylesheets/time_source") }
+    its(:first) { should eq("stylesheets/time_source.css.scss") }
   end
 end

@@ -22,9 +22,7 @@ module AllAboard::Source::Assets
           # annoying when you break the server as it tries to load a .swp file
           # when you're editing a stylesheet.
           next if filename.ends_with?(".swp")
-
-          sans_types = filename.split(".").first
-          "stylesheets/#{sans_types}"
+          "stylesheets/#{filename}"
         end.compact
       else
         []
