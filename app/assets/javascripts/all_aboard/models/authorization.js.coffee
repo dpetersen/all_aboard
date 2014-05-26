@@ -1,8 +1,8 @@
 AllAboard.Authorization = Em.Object.extend
-  implementingAppLoginPath: Em.computed ->
+  implementingAppLoginPath: (Em.computed ->
     $("body").data("implementingAppLoginPath")
-  .cacheable()
+  ).cacheable()
 
-  canManageBoards: Em.computed ->
+  canManageBoards: (Em.computed ->
     $("body").data("can-manage-boards")?
-  .cacheable()
+  ).cacheable()

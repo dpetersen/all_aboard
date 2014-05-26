@@ -12,23 +12,23 @@ AllAboard.PerspectiveAssignmentComponent = Em.Component.extend
 
   backgroundColors: [ "468966", "FFB03B", "B64926", "8E2800" ]
 
-  sourceAndPerspective: Em.computed ->
+  sourceAndPerspective: (Em.computed ->
     segments = @get("assignment.template.id").split(":")
     dimensionIndex = segments.length - 1
     dimensions = segments[dimensionIndex]
     segments[dimensionIndex] = "x#{dimensions}"
     segments.join(" ")
-  .property("assignment.template.id")
+  ).property("assignment.template.id")
 
-  inlineStyle: Em.computed ->
+  inlineStyle: (Em.computed ->
     i = Math.floor(Math.random() * @backgroundColors.length)
     color = @backgroundColors[i]
     "background-color: ##{color}"
-  .property()
+  ).property()
 
-  templateName: Em.computed ->
+  layoutName: (Em.computed ->
     @get("assignment.template.templateName")
-  .property("assignment.template.templateName")
+  ).property("assignment.template.templateName")
 
   didInsertElement: ->
     @get("parentView").reordered()

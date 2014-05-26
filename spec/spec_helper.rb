@@ -20,7 +20,7 @@ end
 require 'capybara'
 require 'fakeredis/rspec'
 require 'factory_girl_rails'
-require 'shoulda-matchers'
+require 'shoulda/matchers'
 
 require 'capybara/poltergeist'
 Capybara.javascript_driver = :poltergeist

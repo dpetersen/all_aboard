@@ -1,11 +1,11 @@
 AllAboard.SlideController = Em.ObjectController.extend
-  sources: Em.computed ->
+  sources: (Em.computed ->
     @get("store").findAll("source")
-  .property()
+  ).property()
 
-  assignmentsSaving: Em.computed ->
+  assignmentsSaving: (Em.computed ->
     @get("perspectiveAssignments").anyBy("isSaving", true)
-  .property("perspectiveAssignments.@each.isSaving")
+  ).property("perspectiveAssignments.@each.isSaving")
 
   updateAssignmentPositions: (data) ->
     @get("perspectiveAssignments").forEach (assignment) =>
@@ -14,6 +14,7 @@ AllAboard.SlideController = Em.ObjectController.extend
       @updateAssignment(assignment, position.col, position.row)
 
   updateAssignment: (assignment, column, row) ->
+    console.info "Updating assignment", column, row, assignment.get("isDirty"), assignment.get("id")
     assignment.setProperties(column: column, row: row)
     assignment.save() if assignment.get("isDirty") && assignment.get("id")
 
