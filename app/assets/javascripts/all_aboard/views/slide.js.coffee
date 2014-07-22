@@ -1,8 +1,7 @@
 AllAboard.SlideView = Em.View.extend
   reordered: ->
-    console.info "Reordered", @gridster().serialize()
-    debugger
-    @get("controller").updateAssignmentPositions(@gridster().serialize())
+    console.info "Reordered", @gridster().serialize()[0]
+    #@get("controller").updateAssignmentPositions(@gridster().serialize())
 
   # Gridster has its hooks into the DOM pretty hard and can't be told to
   # re-grid after it has already done so.  We have to toss everything out and
